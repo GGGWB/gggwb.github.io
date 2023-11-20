@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>my first blog</title>
+      <link href="/2023/11/20/my-first-blog/"/>
+      <url>/2023/11/20/my-first-blog/</url>
+      
+        <content type="html"><![CDATA[<p>目前已有的自建图床方式：</p><ul><li>免费<ul><li>PicGo + GitHub</li><li>Backblaze 云存储 + Cloudflare</li></ul></li><li>付费<ul><li>PicGo + 腾讯云</li><li>PicGo + 阿里云</li></ul></li></ul><p>PicGo 是一个很好的图片上传工具，搭配图床和写作工具 typora，可以很好的完成，写作 - 图片插入 - 上传的自动化，做到一处编辑，到处查看的功能。</p><p>那么如果有自己的群晖或者威联通或者家庭服务器，就可以利用起自己的 24 小时运作的 docker，构建一个免费的图床，这里用到的是 docker 应用 lsky - 兰空图床。</p><h2 id="lsky容器的部署"><a class="markdownIt-Anchor" href="#lsky容器的部署">#</a> lsky 容器的部署</h2><h3 id="1-docker界面安装"><a class="markdownIt-Anchor" href="#1-docker界面安装">#</a> 1、Docker 界面安装</h3><ul><li><p>新建 lsky 文件夹，将 lsky 的所有数据存在该文件夹下</p></li><li><p>在群晖 docker 的注册表中搜索 lsky-pro-docker（<a href="https://hub.docker.com/r/halcyonazure/lsky-pro-docker%EF%BC%89">https://hub.docker.com/r/halcyonazure/lsky-pro-docker）</a> 下载安装，我这边因为可能是黑群的原因注册表经常打不开，于是我用第三方社群中下载的 docker 面板，先下载镜像，再创建容器，就可以曲线救国（这个 docker 面板其实就是 portainer 面板，非常好用）</p></li><li><p>创建容器的时候</p><ul><li><p>注意本机未使用端口 对应 容器端口 8089 端口；</p></li><li><p>网络就是 bridge 桥接；</p></li><li><p>文件夹对应关系如下：</p></li></ul></li><li><p>打开容器：<a href="http://xn--IP+-x28dj1y3jfj07aea5j229osfks8mz42b8b8a">http:// 本机 IP + 上面设置的本地端口</a></p></li></ul><p>2、lsky 获取 tokens</p><ul><li>先给 lsky 容器在群晖上设置反向代理，就可以以 https 的形式访问（为什么）</li></ul><h2 id="picgo下载lankong插件"><a class="markdownIt-Anchor" href="#picgo下载lankong插件">#</a> PicGo 下载 lankong 插件</h2><h2 id="lankong插件配制lsky容器连接"><a class="markdownIt-Anchor" href="#lankong插件配制lsky容器连接">#</a> lankong 插件配制 lsky 容器连接</h2><h2 id="typora配置picgo代理上传"><a class="markdownIt-Anchor" href="#typora配置picgo代理上传">#</a> typora 配置 picgo 代理上传</h2><p>文章参考：</p><ul><li><h6 id="docker配置lsky-pro兰空图床"><a class="markdownIt-Anchor" href="#docker配置lsky-pro兰空图床">#</a> 【Docker】配置 lsky pro 兰空图床</h6></li></ul><p><a href="https://blog.csdn.net/muxuen/article/details/129002609">https://blog.csdn.net/muxuen/article/details/129002609</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/11/13/hello-world/"/>
+      <url>/2023/11/13/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start">#</a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post">#</a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server">#</a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files">#</a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites">#</a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
