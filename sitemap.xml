@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.gwbiao.eu.org/2023/11/20/my-first-blog/</loc>
+    <loc>http://gggwb.github.io/2023/11/20/my-first-blog/</loc>
     
     <lastmod>2023-11-20</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://blog.gwbiao.eu.org/2023/11/13/hello-world/</loc>
+    <loc>http://gggwb.github.io/2023/11/13/hello-world/</loc>
     
     <lastmod>2023-11-13</lastmod>
     
@@ -21,7 +21,7 @@
   
 
   <url>
-    <loc>http://blog.gwbiao.eu.org/</loc>
+    <loc>http://gggwb.github.io/</loc>
     <lastmod>2023-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
