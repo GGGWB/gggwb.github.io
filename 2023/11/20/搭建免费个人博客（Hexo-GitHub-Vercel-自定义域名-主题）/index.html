@@ -18,12 +18,12 @@
   
   
   <title>搭建免费个人博客（Hexo+GitHub+Vercel+自定义域名+主题） | Hexo</title>
-  <meta name="description" content="# 1. 前言 依照本文搭建博客：  高效简洁 无需服务器 可自定义域名（没有自定义域名也可快速访问，无需🪜）  鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。   Hexo 是一个高效的静态网站生成框架，它基于 Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo 运行在本地电脑中；   GitHub 用于存储编写">
+  <meta name="description" content="1.前言依照本文搭建博客：  高效简洁 无需服务器 可自定义域名（没有自定义域名也可快速访问，无需🪜）  鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。  Hexo是一个高效的静态网站生成框架，它基于Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo运行在本地电脑中；  GitHub用于存储编写好的博客内容以及展示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建免费个人博客（Hexo+GitHub+Vercel+自定义域名+主题）">
 <meta property="og:url" content="http://gggwb.github.io/2023/11/20/%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/index.html">
 <meta property="og:site_name" content="Monster">
-<meta property="og:description" content="# 1. 前言 依照本文搭建博客：  高效简洁 无需服务器 可自定义域名（没有自定义域名也可快速访问，无需🪜）  鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。   Hexo 是一个高效的静态网站生成框架，它基于 Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo 运行在本地电脑中；   GitHub 用于存储编写">
+<meta property="og:description" content="1.前言依照本文搭建博客：  高效简洁 无需服务器 可自定义域名（没有自定义域名也可快速访问，无需🪜）  鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。  Hexo是一个高效的静态网站生成框架，它基于Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo运行在本地电脑中；  GitHub用于存储编写好的博客内容以及展示">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494132.png">
 <meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494286.png">
@@ -349,8 +349,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="1前言"><a class="markdownIt-Anchor" href="#1前言">#</a> 1. 前言</h1>
-<p>依照本文搭建博客：</p>
+        <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>依照本文搭建博客：</p>
 <ul>
 <li>高效简洁</li>
 <li>无需服务器</li>
@@ -358,32 +357,26 @@
 </ul>
 <p>鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。</p>
 <ul>
-<li>
-<p><strong>Hexo</strong> 是一个高效的静态网站生成框架，它基于<strong> Node.js</strong>，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo 运行在本地电脑中；</p>
+<li><p><strong>Hexo</strong>是一个高效的静态网站生成框架，它基于<strong>Node.js</strong>，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。hexo运行在本地电脑中；</p>
 </li>
-<li>
-<p><strong>GitHub</strong> 用于存储编写好的博客内容以及展示；</p>
+<li><p><strong>GitHub</strong>用于存储编写好的博客内容以及展示；</p>
 <ul>
-<li><strong>Vervel</strong> 用于快速访问以及自定义域名；</li>
+<li><strong>Vervel</strong>用于快速访问以及自定义域名；</li>
 </ul>
 </li>
 </ul>
-<p>部署好以后，使用方法是本地编写 md 文件，推送到 GitHub，部署到 vercel，浏览器查看！简洁～教程分为几大部分：</p>
+<p>部署好以后，使用方法是本地编写md文件，推送到GitHub，部署到vercel，浏览器查看！简洁～教程分为几大部分：</p>
 <ul>
-<li>本地 hexo 的安装和示例博客的本地查看；</li>
-<li>hexo 更换漂亮主题；</li>
-<li>GitHub 仓库的新建和本地 pc 的联动配置；</li>
-<li>Vercel 部署和自定义域名的设置；</li>
+<li>本地hexo的安装和示例博客的本地查看；</li>
+<li>hexo更换漂亮主题；</li>
+<li>GitHub仓库的新建和本地pc的联动配置；</li>
+<li>Vercel部署和自定义域名的设置；</li>
 </ul>
 <p>我选了一个简单的主题，如下所示：</p>
 <p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494132.png" alt="截屏2023-11-20 23.09.19"></p>
 <p>当然也可以有很多漂亮的主题：</p>
 <p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494286.png" alt="image-20231120233124619"></p>
-<h1 id="2hexo的安装"><a class="markdownIt-Anchor" href="#2hexo的安装">#</a> 2.hexo 的安装</h1>
-<h1 id="3hexo更换主题"><a class="markdownIt-Anchor" href="#3hexo更换主题">#</a> 3.hexo 更换主题</h1>
-<h1 id="4推送到github"><a class="markdownIt-Anchor" href="#4推送到github">#</a> 4. 推送到 GitHub</h1>
-<h1 id="5部署到vercel"><a class="markdownIt-Anchor" href="#5部署到vercel">#</a> 5. 部署到 Vercel</h1>
-
+<h1 id="2-hexo的安装"><a href="#2-hexo的安装" class="headerlink" title="2.hexo的安装"></a>2.hexo的安装</h1><h1 id="3-hexo更换主题"><a href="#3-hexo更换主题" class="headerlink" title="3.hexo更换主题"></a>3.hexo更换主题</h1><h1 id="4-推送到GitHub"><a href="#4-推送到GitHub" class="headerlink" title="4.推送到GitHub"></a>4.推送到GitHub</h1><h1 id="5-部署到Vercel"><a href="#5-部署到Vercel" class="headerlink" title="5.部署到Vercel"></a>5.部署到Vercel</h1>
       
     </div>
     <div class="article-footer">
