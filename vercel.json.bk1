@@ -1,0 +1,25 @@
+{
+  "public": true,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/$1"
+    }
+  ],
+  "alias": "blog.gwbiao.fun",
+  "builds": [
+    {
+      "src": "vercel-build.js",
+      "use": "@vercel/node",
+      "config": {
+        "installConfig": {
+          "fsevents": {
+            "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.1.tgz",
+            "integrity": "sha512-F5A6wdhXelR9R4fq55pHZH94yPExZLOJ3tsQsE6/Eysl9R+t8iFK+UK0RoR53V3oq6yWd5L7A7naK54yqf3cZw=="
+          }
+        }
+      }
+    }
+  ]
+}
+
