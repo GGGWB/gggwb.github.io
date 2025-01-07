@@ -17,20 +17,27 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Docker必知必会 | 欢迎来到浪浪山</title>
-  <meta name="description" content="# 常用命令  查看镜像  1docker images  拉取镜像  1docker pull  删除镜像  1docker rmi # 创建容器  创建交互式容器  1docker run -it --name&#x3D;c1 centos7  exit 可以退出容器终端 查看容器信息  1docker ps -a  以守护进程启动 nginx  1docker run -d --name&#x3D;c2 ngi">
+  <title>DDNS必备之一分钟自动更新SSL证书 | 欢迎来到浪浪山</title>
+  <meta name="description" content="# 为什么要自动更新 SSL 证书  SSL 证书是有了域名、服务器、做了 DDNS 云解析后必备步骤，从此告别浏览器烦人的不安全❌和网页登陆警告⚠️ SSL 证书因为一些不清不楚的原因，据说是有个大厂推动缩短 SSL 证书期限，目前 SSL 免费证书每三个月就会过期，虽然说可以手动十五分钟搞定新证书，但是每次都要登录一次云解析厂商下载新证书，然后去服务器上传新证书，很繁琐 云服务器厂商有付费更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker必知必会">
-<meta property="og:url" content="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/index.html">
+<meta property="og:title" content="DDNS必备之一分钟自动更新SSL证书">
+<meta property="og:url" content="http://gggwb.github.io/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/index.html">
 <meta property="og:site_name" content="Monster">
-<meta property="og:description" content="# 常用命令  查看镜像  1docker images  拉取镜像  1docker pull  删除镜像  1docker rmi # 创建容器  创建交互式容器  1docker run -it --name&#x3D;c1 centos7  exit 可以退出容器终端 查看容器信息  1docker ps -a  以守护进程启动 nginx  1docker run -d --name&#x3D;c2 ngi">
+<meta property="og:description" content="# 为什么要自动更新 SSL 证书  SSL 证书是有了域名、服务器、做了 DDNS 云解析后必备步骤，从此告别浏览器烦人的不安全❌和网页登陆警告⚠️ SSL 证书因为一些不清不楚的原因，据说是有个大厂推动缩短 SSL 证书期限，目前 SSL 免费证书每三个月就会过期，虽然说可以手动十五分钟搞定新证书，但是每次都要登录一次云解析厂商下载新证书，然后去服务器上传新证书，很繁琐 云服务器厂商有付费更新">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-14T13:25:01.000Z">
-<meta property="article:modified_time" content="2024-01-14T13:42:02.020Z">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941608.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941616.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941624.png">
+<meta property="article:published_time" content="2024-12-23T06:50:23.000Z">
+<meta property="article:modified_time" content="2024-12-23T08:17:37.431Z">
 <meta property="article:author" content="郭文彪">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="DDNS">
+<meta property="article:tag" content="SSL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941608.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/index.html">
+  <link rel="canonical" href="http://gggwb.github.io/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
   
@@ -347,14 +354,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Docker必知必会" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-DDNS必备之一分钟自动更新SSL证书" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Docker必知必会
+      DDNS必备之一分钟自动更新SSL证书
     </h1>
   
 
@@ -362,12 +369,17 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
-	  <time datetime="2024-01-14T13:25:01.000Z" itemprop="datePublished">2024-01-14</time>
+	<a href="/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/" class="article-date">
+	  <time datetime="2024-12-23T06:50:23.000Z" itemprop="datePublished">2024-12-23</time>
 	</a>
 </span>
         
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/DDNS/" rel="tag">DDNS</a>, <a class="article-tag-link-link" href="/tags/SSL/" rel="tag">SSL</a>, <a class="article-tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -378,94 +390,48 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="常用命令"><a class="markdownIt-Anchor" href="#常用命令">#</a> 常用命令</h1>
+        <h1 id="为什么要自动更新ssl证书"><a class="markdownIt-Anchor" href="#为什么要自动更新ssl证书">#</a> 为什么要自动更新 SSL 证书</h1>
 <ul>
-<li>查看镜像</li>
+<li>SSL 证书是有了域名、服务器、做了 DDNS 云解析后必备步骤，从此告别浏览器烦人的不安全❌和网页登陆警告⚠️</li>
+<li>SSL 证书因为一些不清不楚的原因，据说是有个大厂推动缩短 SSL 证书期限，目前 SSL 免费证书每三个月就会过期，虽然说可以手动十五分钟搞定新证书，但是每次都要登录一次云解析厂商下载新证书，然后去服务器上传新证书，很繁琐</li>
+<li>云服务器厂商有付费更新服务，1 个月 99 元，贵的雅痞，云服务器还 99 / 年呢，不敢奢望，溜了溜了</li>
+<li><strong>我是给黑群晖更新证书，需要注意的是，用 ssh 登陆后，安装命令用管理员权限执行即可</strong></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h1 id="httpsok-惊闻可以自动更新"><a class="markdownIt-Anchor" href="#httpsok-惊闻可以自动更新">#</a> httpsok - 惊闻可以自动更新</h1>
+<p>先上连接：<a target="_blank" rel="noopener" href="https://httpsok.com/">https://httpsok.com/</a></p>
+<p><strong>httpsok</strong> 是一个便捷的 HTTPS 证书自动续期工具，专为 Nginx 服务器设计。已服务众多中小企业，<strong>稳定</strong>、<strong>安全</strong>、<strong>可靠</strong>。</p>
+<h2 id="特性"><a class="markdownIt-Anchor" href="#特性">#</a> 特性</h2>
 <ul>
-<li>拉取镜像</li>
+<li><strong>⚡️ 简单高效</strong> 一行命令，一分钟轻松搞定 SSL 证书自动续期</li>
+<li><strong>✅ 自动检测</strong> 无需关心 nginx 配置，自动识别证书配置，适合老旧系统、复杂配置的生产环境</li>
+<li><strong>✅ 泛解析、多域名、多服务器</strong> 轻松搞定</li>
+<li><strong>✅ 证书监控</strong> 对于即将失效的证书，提供公众号推送提醒</li>
+<li><strong>✅ 兼容性好</strong> 兼容主流的 Linux 系统  <code>Debain</code>   <code>CentOS</code>   <code>Ubuntu</code>   <code>TencentOS</code>  等</li>
+<li><strong>✅ 支持手动申请</strong> 支持手动申请证书，方便部署 CDN、OSS 等场景。</li>
+<li><strong>✅ CDN、LB、OSS 轻松搞定</strong> 支持主流云厂商</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除镜像</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi</span><br></pre></td></tr></table></figure>
-<h1 id="创建容器"><a class="markdownIt-Anchor" href="#创建容器">#</a> 创建容器</h1>
-<ul>
-<li>创建交互式容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1 centos7</span><br></pre></td></tr></table></figure>
-<ul>
-<li>exit 可以退出容器终端</li>
-<li>查看容器信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<ul>
-<li>以守护进程启动 nginx</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=c2 nginx:1.12\(注释：斜杠换行) -p 8080:80</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动已停止的容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 名字</span><br></pre></td></tr></table></figure>
-<ul>
-<li>进入交互式容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 名字 /bin/bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>停止容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 名字</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> 容器名</span><br></pre></td></tr></table></figure>
-<h1 id="数据卷"><a class="markdownIt-Anchor" href="#数据卷">#</a> 数据卷</h1>
-<ul>
-<li>本质上是一个目录，共享目录，在创建容器时，同时将目录挂载到了容器中，删除容器不会讲数据卷中的数据删除掉 -i 交互 -t 终端 -d 守护进程</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1  -v /root/docker/data:/root/docker/data centos:7</span><br></pre></td></tr></table></figure>
-<h1 id="数据卷容器"><a class="markdownIt-Anchor" href="#数据卷容器">#</a> 数据卷容器</h1>
-<ul>
-<li>启动 c1 容器并挂载</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1 -v /volume centos:7</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动 c2 容器并集成 c1 容器的数据卷挂载关系</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c2 --volumes-from c1 centos:7</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看容器的详细信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect c2</span><br></pre></td></tr></table></figure>
-<h1 id="docker部署mysql"><a class="markdownIt-Anchor" href="#docker部署mysql">#</a> docker 部署 mysql</h1>
-<ul>
-<li>启动 mysql 并挂载目录</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run-id --name=test_mysql -p 3306:3306 -v /root/mysql/conf:/etc/mysql/conf.d -v /root/docker/logs:/logs -v /root/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=5201314 mysql:5.6</span><br></pre></td></tr></table></figure>
-<ul>
-<li>进入容器看一下</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it test_mysql /bin/bash</span><br></pre></td></tr></table></figure>
-<h1 id="docker部署tomcat"><a class="markdownIt-Anchor" href="#docker部署tomcat">#</a> docker 部署 tomcat</h1>
-<ul>
-<li>apache 开源的 web 服务器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -<span class="built_in">id</span> test_tomcat -p 8080:8080 -v &amp;<span class="built_in">pwd</span>:/usr/local/tomcat/webapps tomcat</span><br></pre></td></tr></table></figure>
-<h1 id="docker镜像原理"><a class="markdownIt-Anchor" href="#docker镜像原理">#</a> docker 镜像原理</h1>
-<p>linux 一切都是文件</p>
-<ul>
-<li>底层 bootloader+kernel=boot file system=bootfs 文件引导系统</li>
-<li>二层 root file system=rootfs 例如 /etc/sbin /root/dev Linux 各种发行版都是基于 rootfs</li>
-<li>容器创建了可读写的 rootfs 然后调用内核，所以容器小而快</li>
-</ul>
+<h1 id="快速教程"><a class="markdownIt-Anchor" href="#快速教程">#</a> 快速教程</h1>
+<p><strong>概述：1. 复制对应系统的脚本；2. 在服务器中以管理员权限运行；3. 进入 httpsok 证书管理中，复制需要配置的 CNAME 解析，在 DDNS 云解析中添加记录（我的是腾讯云）</strong></p>
+<h2 id="一-安装httpsok"><a class="markdownIt-Anchor" href="#一-安装httpsok">#</a> 一、安装 httpsok</h2>
+<p>登陆 PC 控制台 👉 👉 👉 <strong><a target="_blank" rel="noopener" href="https://httpsok.com/p/4c9n">获取安装命令</a></strong> ，然后到服务器执行即可。</p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941608.png" alt="httsok.com 控制台-复制并执行安装命令"></p>
+<p>温馨提示</p>
+<ol>
+<li>证书到期前 <strong>15 天</strong> <strong> <code>🌟自动申请SSL证书</code> </strong> <strong> <code>🌟自动替换SSL证书</code> </strong> <strong> <code>🌟自动重载服务</code> </strong> <strong> <code>🌟🌟无须人工介入</code> </strong></li>
+<li>安装成功后，会自动检测一次系统中的证书，并同步到控制台，后续每天检测一次。</li>
+</ol>
+<h2 id="二-配置dns"><a class="markdownIt-Anchor" href="#二-配置dns">#</a> 二、配置 DNS</h2>
+<p><strong>❗❗❗根据您的实际情况</strong>，添对应的 DNS 解析记录。<a target="_blank" rel="noopener" href="https://httpsok.com/doc/guide/dns.html">DNS 配置参考</a></p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941616.png" alt="httsok-DNS解析配置参考"></p>
+<h2 id="三-完成"><a class="markdownIt-Anchor" href="#三-完成">#</a> 三、完成</h2>
+<p>SSL 证书自动续期就这么简单，快去控制台查看自己的证书吧。</p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202412/202412231734941624.png" alt="httsok控制台-证书管理"></p>
 
       
     </div>
@@ -475,7 +441,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="Docker必知必会" target="_blank" rel="external">http://gggwb.github.io/2024/01/14/Docker必知必会/</a>
+      <a href="http://gggwb.github.io/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/" title="DDNS必备之一分钟自动更新SSL证书" target="_blank" rel="external">http://gggwb.github.io/2024/12/23/DDNS必备之一分钟自动更新SSL证书/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -521,13 +487,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2024/02/01/iOS16-2%E5%AE%89%E8%A3%85%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%972%EF%BC%88%E9%80%82%E5%90%8816-2-16-5%EF%BC%89/" title="iOS16.2安装巨魔商店2（适合16.2-16.5）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/" title="保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" title="OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

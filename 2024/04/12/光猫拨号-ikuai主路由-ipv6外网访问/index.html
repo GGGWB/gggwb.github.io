@@ -17,20 +17,31 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Docker必知必会 | 欢迎来到浪浪山</title>
-  <meta name="description" content="# 常用命令  查看镜像  1docker images  拉取镜像  1docker pull  删除镜像  1docker rmi # 创建容器  创建交互式容器  1docker run -it --name&#x3D;c1 centos7  exit 可以退出容器终端 查看容器信息  1docker ps -a  以守护进程启动 nginx  1docker run -d --name&#x3D;c2 ngi">
+  <title>OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由) | 欢迎来到浪浪山</title>
+  <meta name="description" content="# 家庭网络结构   网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip   ikuai 子网网段为 192.168.78.0&#x2F;24   所有设备均有 ipv6 地址   # 想要实现的操作  操作 1: 实现在外网可以通过 ipv6 访问家中内网设备 操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接 openVPN 可行后，会打">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker必知必会">
-<meta property="og:url" content="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/index.html">
+<meta property="og:title" content="OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)">
+<meta property="og:url" content="http://gggwb.github.io/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/index.html">
 <meta property="og:site_name" content="Monster">
-<meta property="og:description" content="# 常用命令  查看镜像  1docker images  拉取镜像  1docker pull  删除镜像  1docker rmi # 创建容器  创建交互式容器  1docker run -it --name&#x3D;c1 centos7  exit 可以退出容器终端 查看容器信息  1docker ps -a  以守护进程启动 nginx  1docker run -d --name&#x3D;c2 ngi">
+<meta property="og:description" content="# 家庭网络结构   网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip   ikuai 子网网段为 192.168.78.0&#x2F;24   所有设备均有 ipv6 地址   # 想要实现的操作  操作 1: 实现在外网可以通过 ipv6 访问家中内网设备 操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接 openVPN 可行后，会打">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-14T13:25:01.000Z">
-<meta property="article:modified_time" content="2024-01-14T13:42:02.020Z">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853495.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853567.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904565.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904591.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904619.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712912104.png">
+<meta property="article:published_time" content="2024-04-12T00:38:58.000Z">
+<meta property="article:modified_time" content="2024-05-18T01:56:37.715Z">
 <meta property="article:author" content="郭文彪">
+<meta property="article:tag" content="ikuai">
+<meta property="article:tag" content="OpenVPN">
+<meta property="article:tag" content="ipv6">
+<meta property="article:tag" content="内网穿透">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853495.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/index.html">
+  <link rel="canonical" href="http://gggwb.github.io/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
   
@@ -345,16 +356,25 @@
 
   
   
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text"> 家庭网络结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text"> 想要实现的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91ipv6"><span class="toc-number">3.1.</span> <span class="toc-text"> 无法访问内网 ipv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%9A%E8%BF%87ipv6%E5%92%8Copenvpn%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E8%AE%BE%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text"> 无法通过 ipv6 和 openVPN 连接内网设备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text"> 解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text"> 问题 1 解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E7%8E%B0%E7%8A%B6"><span class="toc-number">4.2.</span> <span class="toc-text"> 问题 2 现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E6%96%B0%E5%A2%9E%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">4.3.</span> <span class="toc-text"> 问题 2 解决办法：新增静态路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text"> 问题分析</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Docker必知必会" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-光猫拨号-ikuai主路由-ipv6外网访问" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Docker必知必会
+      OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)
     </h1>
   
 
@@ -362,12 +382,22 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
-	  <time datetime="2024-01-14T13:25:01.000Z" itemprop="datePublished">2024-01-14</time>
+	<a href="/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" class="article-date">
+	  <time datetime="2024-04-12T00:38:58.000Z" itemprop="datePublished">2024-04-12</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a>, <a class="article-tag-link-link" href="/tags/ikuai/" rel="tag">ikuai</a>, <a class="article-tag-link-link" href="/tags/ipv6/" rel="tag">ipv6</a>, <a class="article-tag-link-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -378,93 +408,124 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="常用命令"><a class="markdownIt-Anchor" href="#常用命令">#</a> 常用命令</h1>
+        <h1 id="家庭网络结构"><a class="markdownIt-Anchor" href="#家庭网络结构">#</a> 家庭网络结构</h1>
 <ul>
-<li>查看镜像</li>
+<li>
+<p>网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip</p>
+</li>
+<li>
+<p>ikuai 子网网段为 192.168.78.0/24</p>
+</li>
+<li>
+<p>所有设备均有 ipv6 地址</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h1 id="想要实现的操作"><a class="markdownIt-Anchor" href="#想要实现的操作">#</a> 想要实现的操作</h1>
 <ul>
-<li>拉取镜像</li>
+<li>操作 1: 实现在外网可以通过 ipv6 访问家中内网设备</li>
+<li>操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接</li>
+<li>openVPN 可行后，会打开 ipv6 防火墙，只放行特定 ip，日差则使用 openVPN 能实现内网访问</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull</span><br></pre></td></tr></table></figure>
+<h1 id="遇到的问题"><a class="markdownIt-Anchor" href="#遇到的问题">#</a> 遇到的问题</h1>
+<h2 id="无法访问内网ipv6"><a class="markdownIt-Anchor" href="#无法访问内网ipv6">#</a> 无法访问内网 ipv6</h2>
+<p>子网设备获取了公网 ipv6 地址，但只能内网互访，外网无法连接，比方说利用手机流量，ipv6 连接内网群晖失败</p>
+<h2 id="无法通过ipv6和openvpn连接内网设备"><a class="markdownIt-Anchor" href="#无法通过ipv6和openvpn连接内网设备">#</a> 无法通过 ipv6 和 openVPN 连接内网设备</h2>
+<p>openVPN 客户端连接服务端成功，可以 ping 通以及通过 ip 地址 192.168.78.1 访问 ikuai 管理页面，但无法访问 ikuai 子网设备</p>
+<h1 id="解决办法"><a class="markdownIt-Anchor" href="#解决办法">#</a> 解决办法</h1>
+<p>先解决无法连接内网 ipv6 的问题</p>
+<h2 id="问题1解决方法"><a class="markdownIt-Anchor" href="#问题1解决方法">#</a> 问题 1 解决方法</h2>
 <ul>
-<li>删除镜像</li>
+<li>
+<p>关掉光猫的 ipv6 防火墙（关掉以后，在 ikuai 设置 ACL 规则）</p>
+</li>
+<li>
+<p>查看光猫背后的用户名密码并登录，不需要超级管理员</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi</span><br></pre></td></tr></table></figure>
-<h1 id="创建容器"><a class="markdownIt-Anchor" href="#创建容器">#</a> 创建容器</h1>
+<div style="text-align:center;">
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853495.png" style="zoom:50%;" />
+</div>
 <ul>
-<li>创建交互式容器</li>
+<li>进入 &lt;安全&gt;-&lt; 防火墙 &gt;-&lt; 攻击保护设置 &gt;- 取消勾选<strong> Ipv6Spi</strong></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1 centos7</span><br></pre></td></tr></table></figure>
+<div style="text-align:center;">
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853567.png" alt="image-20240412003925441" style="zoom:50%;" />
+</div>
 <ul>
-<li>exit 可以退出容器终端</li>
-<li>查看容器信息</li>
+<li>完成，外网 ipv6 访问全部内网设备</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h2 id="问题2现状"><a class="markdownIt-Anchor" href="#问题2现状">#</a> 问题 2 现状</h2>
+<p>可以通过 ipv6 的 openVPN 连接 ikuai，但不能访问内网设备</p>
 <ul>
-<li>以守护进程启动 nginx</li>
+<li>openvpn 服务端配置：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=c2 nginx:1.12\(注释：斜杠换行) -p 8080:80</span><br></pre></td></tr></table></figure>
+<div style="text-align:center;">
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904565.png" alt="img" style="zoom:50%;" />
+</div>
+<div style="text-align:center;">
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904591.png" alt="img" style="zoom:50%;" />
+</div>
 <ul>
-<li>启动已停止的容器</li>
+<li>openvpn 客户端配置</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 名字</span><br></pre></td></tr></table></figure>
+<div style="text-align:center;">
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904619.png" alt="img" style="zoom:50%;" />
+</div>
 <ul>
-<li>进入交互式容器</li>
+<li>配置 &lt;认证计费&gt;-&lt; 认证账号管理 &gt;-&lt; 账号管理 &gt;，账户名 / 密码随便写，openVPN 客户端登录时用，其他如下</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 名字 /bin/bash</span><br></pre></td></tr></table></figure>
+<img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712912104.png" alt="image-20240412165502101" style="zoom:50%;" />
+<h2 id="问题2解决办法新增静态路由"><a class="markdownIt-Anchor" href="#问题2解决办法新增静态路由">#</a> 问题 2 解决办法：新增静态路由</h2>
 <ul>
-<li>停止容器</li>
+<li>
+<p>线路：自动</p>
+</li>
+<li>
+<p>目的地址；192.168.78.0</p>
+</li>
+<li>
+<p>子网掩码：255.255.255.0 (24)</p>
+</li>
+<li>
+<p>网关：192.168.78.1</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 名字</span><br></pre></td></tr></table></figure>
+<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析</h2>
 <ul>
-<li>删除容器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> 容器名</span><br></pre></td></tr></table></figure>
-<h1 id="数据卷"><a class="markdownIt-Anchor" href="#数据卷">#</a> 数据卷</h1>
-<ul>
-<li>本质上是一个目录，共享目录，在创建容器时，同时将目录挂载到了容器中，删除容器不会讲数据卷中的数据删除掉 -i 交互 -t 终端 -d 守护进程</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1  -v /root/docker/data:/root/docker/data centos:7</span><br></pre></td></tr></table></figure>
-<h1 id="数据卷容器"><a class="markdownIt-Anchor" href="#数据卷容器">#</a> 数据卷容器</h1>
-<ul>
-<li>启动 c1 容器并挂载</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c1 -v /volume centos:7</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动 c2 容器并集成 c1 容器的数据卷挂载关系</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=c2 --volumes-from c1 centos:7</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看容器的详细信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect c2</span><br></pre></td></tr></table></figure>
-<h1 id="docker部署mysql"><a class="markdownIt-Anchor" href="#docker部署mysql">#</a> docker 部署 mysql</h1>
-<ul>
-<li>启动 mysql 并挂载目录</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run-id --name=test_mysql -p 3306:3306 -v /root/mysql/conf:/etc/mysql/conf.d -v /root/docker/logs:/logs -v /root/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=5201314 mysql:5.6</span><br></pre></td></tr></table></figure>
-<ul>
-<li>进入容器看一下</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it test_mysql /bin/bash</span><br></pre></td></tr></table></figure>
-<h1 id="docker部署tomcat"><a class="markdownIt-Anchor" href="#docker部署tomcat">#</a> docker 部署 tomcat</h1>
-<ul>
-<li>apache 开源的 web 服务器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -<span class="built_in">id</span> test_tomcat -p 8080:8080 -v &amp;<span class="built_in">pwd</span>:/usr/local/tomcat/webapps tomcat</span><br></pre></td></tr></table></figure>
-<h1 id="docker镜像原理"><a class="markdownIt-Anchor" href="#docker镜像原理">#</a> docker 镜像原理</h1>
-<p>linux 一切都是文件</p>
-<ul>
-<li>底层 bootloader+kernel=boot file system=bootfs 文件引导系统</li>
-<li>二层 root file system=rootfs 例如 /etc/sbin /root/dev Linux 各种发行版都是基于 rootfs</li>
-<li>容器创建了可读写的 rootfs 然后调用内核，所以容器小而快</li>
+<li>
+<p>ikuai 的 &lt;应用工具&gt;&lt; 路由追踪 &gt; 功能，做路由跟踪<br>
+第一个：ping 了内网设备 192.168.78.239，第一跳为 ikuai 的 wan 口网关 192.168.1.1 第二跳到外网，没有经过 ikuai 的 lan 口 192.168.78.1<br>
+ 第二个：ping 了 lan 口 ip 192.168.78.1，能直接跳过去<br>
+于是判断应该是少了 78.1 到 78.0/24 网段的路由</p>
+</li>
+<li>
+<p>当前路由表如下：<br>
+线路 1：wan1<br>
+ 目的地址：0.0.0.0<br>
+ 子网掩码：0.0.0.0<br>
+ 网关：192.168.1.1</p>
+<p>线路 2:sovpn（我的 openVPN）<br>
+目的地址；10.1.1.0<br>
+ 子网掩码：255.255.255.0<br>
+ 网关：0.0.0.0</p>
+<p>线路 3:wan1（出外网）<br>
+目的地址：192.168.1.0<br>
+ 子网掩码：255.255.255.0<br>
+ 网关：0.0.0.0</p>
+<p>线路 3: doc_ddnsToGo（我弄的 docker 容器）<br>
+192.168.11.0<br>
+255.255.255.0<br>
+0.0.0.0</p>
+</li>
+<li>
+<p>于是添加 78.1 到 78.0/24 的静态路由解决问题</p>
+</li>
 </ul>
 
       
@@ -475,7 +536,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://gggwb.github.io/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="Docker必知必会" target="_blank" rel="external">http://gggwb.github.io/2024/01/14/Docker必知必会/</a>
+      <a href="http://gggwb.github.io/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" title="OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)" target="_blank" rel="external">http://gggwb.github.io/2024/04/12/光猫拨号-ikuai主路由-ipv6外网访问/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -522,14 +583,22 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2024/02/01/iOS16-2%E5%AE%89%E8%A3%85%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%972%EF%BC%88%E9%80%82%E5%90%8816-2-16-5%EF%BC%89/" title="iOS16.2安装巨魔商店2（适合16.2-16.5）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/" title="DDNS必备之一分钟自动更新SSL证书"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/" title="保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2024/02/01/iOS16-2%E5%AE%89%E8%A3%85%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%972%EF%BC%88%E9%80%82%E5%90%8816-2-16-5%EF%BC%89/" title="iOS16.2安装巨魔商店2（适合16.2-16.5）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   
