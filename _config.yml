@@ -115,4 +115,3 @@ backup:
     type: git
     repository:
        github: git@github.com:GGGWB/gggwb.github.io.git,main
-       gitcafe: git@github.com:GGGWB/gggwb.github.io.git,main
