@@ -1,0 +1,10 @@
+{
+  "public": true,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/$1"
+    }
+  ],
+  "alias": "blog.gwbiao.eu.org"
+}

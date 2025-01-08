@@ -5,6 +5,7 @@ tags:
 - 网络
 - DDNS
 - SSL
+toc: true # 是否启用内容索引
 ---
 
 # 为什么要自动更新SSL证书
