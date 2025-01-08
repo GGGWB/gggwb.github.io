@@ -18,12 +18,12 @@
   
   
   <title>OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由) | 欢迎来到浪浪山</title>
-  <meta name="description" content="# 家庭网络结构   网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip   ikuai 子网网段为 192.168.78.0&#x2F;24   所有设备均有 ipv6 地址   # 想要实现的操作  操作 1: 实现在外网可以通过 ipv6 访问家中内网设备 操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接 openVPN 可行后，会打">
+  <meta name="description" content="家庭网络结构 网络结构 ：光猫拨号 –&gt; ikuai作为主路由分发ip  ikuai子网网段为192.168.78.0&#x2F;24  所有设备均有ipv6地址   想要实现的操作 操作1: 实现在外网可以通过ipv6访问家中内网设备 操作2: 实现ikuai开启openVPN服务端，外网客户端可以通过ipv6地址连接 openVPN可行后，会打开ipv6防火墙，只放行特定ip，日差则使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)">
 <meta property="og:url" content="http://gggwb.github.io/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/index.html">
 <meta property="og:site_name" content="Monster">
-<meta property="og:description" content="# 家庭网络结构   网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip   ikuai 子网网段为 192.168.78.0&#x2F;24   所有设备均有 ipv6 地址   # 想要实现的操作  操作 1: 实现在外网可以通过 ipv6 访问家中内网设备 操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接 openVPN 可行后，会打">
+<meta property="og:description" content="家庭网络结构 网络结构 ：光猫拨号 –&gt; ikuai作为主路由分发ip  ikuai子网网段为192.168.78.0&#x2F;24  所有设备均有ipv6地址   想要实现的操作 操作1: 实现在外网可以通过ipv6访问家中内网设备 操作2: 实现ikuai开启openVPN服务端，外网客户端可以通过ipv6地址连接 openVPN可行后，会打开ipv6防火墙，只放行特定ip，日差则使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853495.png">
 <meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853567.png">
@@ -239,7 +239,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/" rel="tag">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" rel="tag">iOS巨魔商店</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ikuai/" rel="tag">ikuai</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipv6/" rel="tag">ipv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E6%99%96/" rel="tag">群晖</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/" rel="tag">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" rel="tag">iOS巨魔商店</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ikuai/" rel="tag">ikuai</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipv6/" rel="tag">ipv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E6%99%96/" rel="tag">群晖</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -249,7 +249,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/DDNS/" style="font-size: 13px;">DDNS</a> <a href="/tags/OpenVPN/" style="font-size: 13px;">OpenVPN</a> <a href="/tags/SSL/" style="font-size: 13px;">SSL</a> <a href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" style="font-size: 13px;">iOS巨魔商店</a> <a href="/tags/ikuai/" style="font-size: 13px;">ikuai</a> <a href="/tags/ipv6/" style="font-size: 13px;">ipv6</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 14px;">个人博客</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 13px;">内网穿透</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 13px;">图床</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">网络</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 13px;">群晖</a>
+      <a href="/tags/DDNS/" style="font-size: 13px;">DDNS</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/OpenVPN/" style="font-size: 13px;">OpenVPN</a> <a href="/tags/SSL/" style="font-size: 13px;">SSL</a> <a href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" style="font-size: 13px;">iOS巨魔商店</a> <a href="/tags/ikuai/" style="font-size: 13px;">ikuai</a> <a href="/tags/ipv6/" style="font-size: 13px;">ipv6</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 14px;">个人博客</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 13px;">内网穿透</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 13px;">图床</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">网络</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 13px;">群晖</a>
     </div>
   </div>
 
@@ -258,7 +258,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -270,6 +270,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/" class="title">Hexo博客文件及部署环境无缝迁移新电脑</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-01-08T11:07:56.000Z" itemprop="datePublished">2025-01-08</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -330,21 +345,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/" class="title">保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-11-21T14:44:54.000Z" itemprop="datePublished">2023-11-21</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -360,7 +360,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text"> 家庭网络结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text"> 想要实现的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91ipv6"><span class="toc-number">3.1.</span> <span class="toc-text"> 无法访问内网 ipv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%9A%E8%BF%87ipv6%E5%92%8Copenvpn%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E8%AE%BE%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text"> 无法通过 ipv6 和 openVPN 连接内网设备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text"> 解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text"> 问题 1 解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E7%8E%B0%E7%8A%B6"><span class="toc-number">4.2.</span> <span class="toc-text"> 问题 2 现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E6%96%B0%E5%A2%9E%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">4.3.</span> <span class="toc-text"> 问题 2 解决办法：新增静态路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text"> 问题分析</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">家庭网络结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">想要实现的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91ipv6"><span class="toc-number">3.1.</span> <span class="toc-text">无法访问内网ipv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%9A%E8%BF%87ipv6%E5%92%8CopenVPN%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E8%AE%BE%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">无法通过ipv6和openVPN连接内网设备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">问题1解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E7%8E%B0%E7%8A%B6"><span class="toc-number">4.2.</span> <span class="toc-text">问题2现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%EF%BC%9A%E6%96%B0%E5%A2%9E%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">4.3.</span> <span class="toc-text">问题2解决办法：新增静态路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text">问题分析</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -414,117 +414,84 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="家庭网络结构"><a class="markdownIt-Anchor" href="#家庭网络结构">#</a> 家庭网络结构</h1>
-<ul>
-<li>
-<p>网络结构 ：光猫拨号 --&gt; ikuai 作为主路由分发 ip</p>
+        <h1 id="家庭网络结构"><a href="#家庭网络结构" class="headerlink" title="家庭网络结构"></a>家庭网络结构</h1><ul>
+<li><p>网络结构 ：光猫拨号 –&gt; ikuai作为主路由分发ip</p>
 </li>
-<li>
-<p>ikuai 子网网段为 192.168.78.0/24</p>
+<li><p>ikuai子网网段为192.168.78.0&#x2F;24</p>
 </li>
-<li>
-<p>所有设备均有 ipv6 地址</p>
+<li><p>所有设备均有ipv6地址</p>
 </li>
 </ul>
-<h1 id="想要实现的操作"><a class="markdownIt-Anchor" href="#想要实现的操作">#</a> 想要实现的操作</h1>
-<ul>
-<li>操作 1: 实现在外网可以通过 ipv6 访问家中内网设备</li>
-<li>操作 2: 实现 ikuai 开启 openVPN 服务端，外网客户端可以通过 ipv6 地址连接</li>
-<li>openVPN 可行后，会打开 ipv6 防火墙，只放行特定 ip，日差则使用 openVPN 能实现内网访问</li>
+<h1 id="想要实现的操作"><a href="#想要实现的操作" class="headerlink" title="想要实现的操作"></a>想要实现的操作</h1><ul>
+<li>操作1: 实现在外网可以通过ipv6访问家中内网设备</li>
+<li>操作2: 实现ikuai开启openVPN服务端，外网客户端可以通过ipv6地址连接</li>
+<li>openVPN可行后，会打开ipv6防火墙，只放行特定ip，日差则使用openVPN能实现内网访问</li>
 </ul>
-<h1 id="遇到的问题"><a class="markdownIt-Anchor" href="#遇到的问题">#</a> 遇到的问题</h1>
-<h2 id="无法访问内网ipv6"><a class="markdownIt-Anchor" href="#无法访问内网ipv6">#</a> 无法访问内网 ipv6</h2>
-<p>子网设备获取了公网 ipv6 地址，但只能内网互访，外网无法连接，比方说利用手机流量，ipv6 连接内网群晖失败</p>
-<h2 id="无法通过ipv6和openvpn连接内网设备"><a class="markdownIt-Anchor" href="#无法通过ipv6和openvpn连接内网设备">#</a> 无法通过 ipv6 和 openVPN 连接内网设备</h2>
-<p>openVPN 客户端连接服务端成功，可以 ping 通以及通过 ip 地址 192.168.78.1 访问 ikuai 管理页面，但无法访问 ikuai 子网设备</p>
-<h1 id="解决办法"><a class="markdownIt-Anchor" href="#解决办法">#</a> 解决办法</h1>
-<p>先解决无法连接内网 ipv6 的问题</p>
-<h2 id="问题1解决方法"><a class="markdownIt-Anchor" href="#问题1解决方法">#</a> 问题 1 解决方法</h2>
-<ul>
-<li>
-<p>关掉光猫的 ipv6 防火墙（关掉以后，在 ikuai 设置 ACL 规则）</p>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="无法访问内网ipv6"><a href="#无法访问内网ipv6" class="headerlink" title="无法访问内网ipv6"></a>无法访问内网ipv6</h2><p>子网设备获取了公网ipv6地址，但只能内网互访，外网无法连接，比方说利用手机流量，ipv6连接内网群晖失败</p>
+<h2 id="无法通过ipv6和openVPN连接内网设备"><a href="#无法通过ipv6和openVPN连接内网设备" class="headerlink" title="无法通过ipv6和openVPN连接内网设备"></a>无法通过ipv6和openVPN连接内网设备</h2><p>openVPN客户端连接服务端成功，可以ping通以及通过ip地址192.168.78.1访问ikuai管理页面，但无法访问ikuai子网设备</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>先解决无法连接内网ipv6的问题</p>
+<h2 id="问题1解决方法"><a href="#问题1解决方法" class="headerlink" title="问题1解决方法"></a>问题1解决方法</h2><ul>
+<li><p>关掉光猫的ipv6防火墙（关掉以后，在ikuai设置ACL规则）</p>
 </li>
-<li>
-<p>查看光猫背后的用户名密码并登录，不需要超级管理员</p>
+<li><p>查看光猫背后的用户名密码并登录，不需要超级管理员</p>
 </li>
 </ul>
 <div style="text-align:center;">
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853495.png" style="zoom:50%;" />
 </div>
+
 <ul>
-<li>进入 &lt;安全&gt;-&lt; 防火墙 &gt;-&lt; 攻击保护设置 &gt;- 取消勾选<strong> Ipv6Spi</strong></li>
+<li>进入&lt;安全&gt;-&lt;防火墙&gt;-&lt;攻击保护设置&gt;-取消勾选<strong>Ipv6Spi</strong></li>
 </ul>
 <div style="text-align:center;">
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712853567.png" alt="image-20240412003925441" style="zoom:50%;" />
 </div>
+
 <ul>
-<li>完成，外网 ipv6 访问全部内网设备</li>
+<li>完成，外网ipv6访问全部内网设备</li>
 </ul>
-<h2 id="问题2现状"><a class="markdownIt-Anchor" href="#问题2现状">#</a> 问题 2 现状</h2>
-<p>可以通过 ipv6 的 openVPN 连接 ikuai，但不能访问内网设备</p>
+<h2 id="问题2现状"><a href="#问题2现状" class="headerlink" title="问题2现状"></a>问题2现状</h2><p>可以通过ipv6的openVPN连接ikuai，但不能访问内网设备</p>
 <ul>
-<li>openvpn 服务端配置：</li>
+<li>openvpn服务端配置：</li>
 </ul>
 <div style="text-align:center;">
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904565.png" alt="img" style="zoom:50%;" />
 </div>
+
 <div style="text-align:center;">
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904591.png" alt="img" style="zoom:50%;" />
 </div>
+
 <ul>
-<li>openvpn 客户端配置</li>
-</ul>
+<li><p>openvpn客户端配置</p>
 <div style="text-align:center;">
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712904619.png" alt="img" style="zoom:50%;" />
 </div>
-<ul>
-<li>配置 &lt;认证计费&gt;-&lt; 认证账号管理 &gt;-&lt; 账号管理 &gt;，账户名 / 密码随便写，openVPN 客户端登录时用，其他如下</li>
+</li>
+<li><p>配置&lt;认证计费&gt;-&lt;认证账号管理&gt;-&lt;账号管理&gt;，账户名&#x2F;密码随便写，openVPN客户端登录时用，其他如下</p>
+</li>
 </ul>
 <img src="https://dsm.gwbiao.eu.org:8089/i/202404/202404121712912104.png" alt="image-20240412165502101" style="zoom:50%;" />
-<h2 id="问题2解决办法新增静态路由"><a class="markdownIt-Anchor" href="#问题2解决办法新增静态路由">#</a> 问题 2 解决办法：新增静态路由</h2>
-<ul>
-<li>
-<p>线路：自动</p>
+
+<h2 id="问题2解决办法：新增静态路由"><a href="#问题2解决办法：新增静态路由" class="headerlink" title="问题2解决办法：新增静态路由"></a>问题2解决办法：新增静态路由</h2><ul>
+<li><p>线路：自动</p>
 </li>
-<li>
-<p>目的地址；192.168.78.0</p>
+<li><p>目的地址；192.168.78.0</p>
 </li>
-<li>
-<p>子网掩码：255.255.255.0 (24)</p>
+<li><p>子网掩码：255.255.255.0 (24)</p>
 </li>
-<li>
-<p>网关：192.168.78.1</p>
+<li><p>网关：192.168.78.1</p>
 </li>
 </ul>
-<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析</h2>
-<ul>
-<li>
-<p>ikuai 的 &lt;应用工具&gt;&lt; 路由追踪 &gt; 功能，做路由跟踪<br>
-第一个：ping 了内网设备 192.168.78.239，第一跳为 ikuai 的 wan 口网关 192.168.1.1 第二跳到外网，没有经过 ikuai 的 lan 口 192.168.78.1<br>
- 第二个：ping 了 lan 口 ip 192.168.78.1，能直接跳过去<br>
-于是判断应该是少了 78.1 到 78.0/24 网段的路由</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><ul>
+<li><p>ikuai的&lt;应用工具&gt;&lt;路由追踪&gt;功能，做路由跟踪<br>第一个：ping了内网设备192.168.78.239，第一跳为ikuai的wan口网关192.168.1.1 第二跳到外网，没有经过ikuai的lan口192.168.78.1<br>第二个：ping了lan口ip 192.168.78.1，能直接跳过去<br>于是判断应该是少了78.1到78.0&#x2F;24网段的路由</p>
 </li>
-<li>
-<p>当前路由表如下：<br>
-线路 1：wan1<br>
- 目的地址：0.0.0.0<br>
- 子网掩码：0.0.0.0<br>
- 网关：192.168.1.1</p>
-<p>线路 2:sovpn（我的 openVPN）<br>
-目的地址；10.1.1.0<br>
- 子网掩码：255.255.255.0<br>
- 网关：0.0.0.0</p>
-<p>线路 3:wan1（出外网）<br>
-目的地址：192.168.1.0<br>
- 子网掩码：255.255.255.0<br>
- 网关：0.0.0.0</p>
-<p>线路 3: doc_ddnsToGo（我弄的 docker 容器）<br>
-192.168.11.0<br>
-255.255.255.0<br>
-0.0.0.0</p>
+<li><p>当前路由表如下：<br>线路1：wan1<br>目的地址：0.0.0.0<br>子网掩码：0.0.0.0<br>网关：192.168.1.1</p>
+<p>线路2:sovpn（我的openVPN）<br>目的地址；10.1.1.0<br>子网掩码：255.255.255.0<br>网关：0.0.0.0</p>
+<p>线路3:wan1（出外网）<br>目的地址：192.168.1.0<br>子网掩码：255.255.255.0<br>网关：0.0.0.0</p>
+<p>线路3: doc_ddnsToGo（我弄的docker容器）<br>192.168.11.0<br>255.255.255.0<br>0.0.0.0</p>
 </li>
-<li>
-<p>于是添加 78.1 到 78.0/24 的静态路由解决问题</p>
+<li><p>于是添加78.1到78.0&#x2F;24的静态路由解决问题</p>
 </li>
 </ul>
 
