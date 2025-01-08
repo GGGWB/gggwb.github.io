@@ -111,7 +111,3 @@ deploy:
   type: git
   repository: git@github.com:GGGWB/gggwb.github.io.git  
   branch: master
-backup:
-    type: git
-    repository:
-       github: git@github.com:GGGWB/gggwb.github.io.git,main

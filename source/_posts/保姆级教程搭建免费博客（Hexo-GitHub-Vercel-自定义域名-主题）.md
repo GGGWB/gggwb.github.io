@@ -316,7 +316,34 @@ toc: true # 是否启用内容索引
 | hexo s 等同于 hexo server   | 生成本地预览                                                 |
 | hexo d 等同于 hexo deploy   | 部署（需要安装 npm install hexo-deployer-git --save 插件包） |
 
-
+# 7.部署完成后的工作流（重要‼️）
+1. 新建hexo博客文章；
+```bash
+hexo new post "新文章名"
+```
+2. 在访达中用typora打开文件，进行markdown编辑；
+3. cleanShot x截图，粘贴入typora中，typora自动调用picgo上传图片到lsky图床并重命名为图床链接；
+4. 预览博客
+```bash
+hexo cl
+hexo g
+hexo s
+```
+5. 预览无问题后，分别执行下面两个命令，推送到vercel中
+```bash
+vercel
+vercel --prod
+```
+6. 执行下面命令，将生成的静态页面进行推送到GitHub master分支
+```bash
+hexo d
+```
+7. 执行下面命令，将源码文件推送到GitHub main分支
+```bash
+git add .
+git commit -m "本次修改的注释"
+git push
+```
 
 参考文章：
 
