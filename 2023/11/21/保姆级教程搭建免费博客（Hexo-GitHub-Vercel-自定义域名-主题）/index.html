@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题） | 欢迎来到浪浪山</title>
+  <meta name="description" content="0.前言依照本文搭建博客：  高效简洁 无需服务器 自定义域名  前置条件：GitHub账号&#x2F;一点点计算机知识&#x2F;自己的域名（可选） 鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。  Hexo是一个高效的静态网站生成框架，它基于Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。编写文章时，hexo运行在本地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）">
+<meta property="og:url" content="http://gggwb.github.io/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/index.html">
+<meta property="og:site_name" content="Monster">
+<meta property="og:description" content="0.前言依照本文搭建博客：  高效简洁 无需服务器 自定义域名  前置条件：GitHub账号&#x2F;一点点计算机知识&#x2F;自己的域名（可选） 鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。  Hexo是一个高效的静态网站生成框架，它基于Node.js，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。编写文章时，hexo运行在本地">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494132.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494286.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700555465.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700556023.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700556184.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700557865.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558405.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558475.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558548.png">
+<meta property="og:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558839.png">
+<meta property="article:published_time" content="2023-11-21T14:44:54.000Z">
+<meta property="article:modified_time" content="2025-01-08T10:28:32.919Z">
+<meta property="article:author" content="郭文彪">
+<meta property="article:tag" content="个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494132.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://gggwb.github.io/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/gggwb" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">浪浪山小郎君</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gggwb" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/" rel="tag">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" rel="tag">iOS巨魔商店</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ikuai/" rel="tag">ikuai</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipv6/" rel="tag">ipv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E6%99%96/" rel="tag">群晖</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DDNS/" style="font-size: 13px;">DDNS</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/OpenVPN/" style="font-size: 13px;">OpenVPN</a> <a href="/tags/SSL/" style="font-size: 13px;">SSL</a> <a href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" style="font-size: 13px;">iOS巨魔商店</a> <a href="/tags/ikuai/" style="font-size: 13px;">ikuai</a> <a href="/tags/ipv6/" style="font-size: 13px;">ipv6</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 14px;">个人博客</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 13px;">内网穿透</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 13px;">图床</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">网络</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 13px;">群晖</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/" class="title">Hexo博客文件及部署环境无缝迁移新电脑</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-01-08T11:07:56.000Z" itemprop="datePublished">2025-01-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/" class="title">DDNS必备之一分钟自动更新SSL证书</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-12-23T06:50:23.000Z" itemprop="datePublished">2024-12-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/12/%E5%85%89%E7%8C%AB%E6%8B%A8%E5%8F%B7-ikuai%E4%B8%BB%E8%B7%AF%E7%94%B1-ipv6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" class="title">OpenVPN访问内网(ipv6+光猫拨号+ikuai主路由)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-12T00:38:58.000Z" itemprop="datePublished">2024-04-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/02/01/iOS16-2%E5%AE%89%E8%A3%85%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%972%EF%BC%88%E9%80%82%E5%90%8816-2-16-5%EF%BC%89/" class="title">iOS16.2安装巨魔商店2（适合16.2-16.5）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-02-01T14:38:20.000Z" itemprop="datePublished">2024-02-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="title">Docker必知必会</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-01-14T13:25:01.000Z" itemprop="datePublished">2024-01-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Hexo%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">1.Hexo的安装和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-hexo%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81node-js%E4%BB%A5%E5%8F%8Agit%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 hexo安装需要node.js以及git环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-git%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E5%8F%AF%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%EF%BC%9AMac-%E6%9C%AC%E5%9C%B0git%E9%85%8D%E7%BD%AE%EF%BC%8CWin%EF%BC%8CLinux%E5%B9%B3%E5%8F%B0%E5%90%8C%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 git安装和配置可参考文章：Mac-本地git配置，Win，Linux平台同理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Mac%E5%AE%89%E8%A3%85hexo"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 Mac安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Hexo%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 Hexo的简单使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%AD%A3%E5%BC%8F%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">2.正式编写博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">3.hexo更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%91%E5%B8%83%E5%88%B0GitHub"><span class="toc-number">5.</span> <span class="toc-text">4.发布到GitHub</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2%E5%88%B0Vercel%E5%B9%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">5.部署到Vercel并自定义域名（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%B8%80%E4%BA%9BHexo%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">6.一些Hexo的常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">7.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-保姆级教程搭建免费博客（Hexo-GitHub-Vercel-自定义域名-主题）" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/" class="article-date">
+	  <time datetime="2023-11-21T14:44:54.000Z" itemprop="datePublished">2023-11-21</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>依照本文搭建博客：</p>
+<ul>
+<li>高效简洁</li>
+<li>无需服务器</li>
+<li>自定义域名</li>
+</ul>
+<p>前置条件：GitHub账号&#x2F;一点点计算机知识&#x2F;自己的域名（可选）</p>
+<p>鉴于很多朋友没有接触过相关知识，我这里做一些简单的介绍，看见不熟悉的内容也不必困惑，简单了解就好。</p>
+<ul>
+<li><p><strong>Hexo</strong>是一个高效的静态网站生成框架，它基于<strong>Node.js</strong>，特点是快速，简单且功能强大，是很多人搭建博客的首选框架。编写文章时，hexo运行在本地电脑中；</p>
+</li>
+<li><p><strong>GitHub</strong>用于存储编写好的博客内容以及展示；</p>
+</li>
+<li><p><strong>Vervel</strong>用于快速访问以及自定义域名；</p>
+</li>
+</ul>
+<p>部署好以后，使用方法是本地编写md文件（我是Mac，Win用户只需要替换hexo安装过程即可），推送到GitHub，部署到vercel，浏览器查看！教程分为几大部分：</p>
+<ul>
+<li>Hexo的安装和示例博客的本地查看；</li>
+<li>编写博客</li>
+<li>Hexo更换漂亮主题；</li>
+<li>GitHub仓库的新建和本地pc的联动配置；</li>
+<li>Vercel部署和自定义域名；</li>
+<li>常用的Hexo命令</li>
+</ul>
+<p>我选了一个简单的主题，如下所示：</p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494132.png" alt="截屏2023-11-20 23.09.19"></p>
+<p>当然也可以有很多绚丽的主题：</p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311201700494286.png" alt="image-20231120233124619"></p>
+<p>话不多说，开始教程。</p>
+<h1 id="1-Hexo的安装和使用"><a href="#1-Hexo的安装和使用" class="headerlink" title="1.Hexo的安装和使用"></a>1.Hexo的安装和使用</h1><h2 id="1-1-hexo安装需要node-js以及git环境"><a href="#1-1-hexo安装需要node-js以及git环境" class="headerlink" title="1.1 hexo安装需要node.js以及git环境"></a>1.1 hexo安装需要node.js以及git环境</h2><ul>
+<li><p>node.js安装很简单，Mac下一条命令即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其余系统的安装可以参考<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">菜鸟教程</a>。</p>
+</li>
+<li><p>安装后进行检查，能正常显示版本号说明没有问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line"><span class="comment"># v20.9.0  &#x27;#&#x27;开头的是注释或者代码输出结果  &#x27;$&#x27;开头的是要输入的命令</span></span><br><span class="line">$ npm -v</span><br><span class="line"><span class="comment"># 10.2.4</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="1-2-git安装和配置可参考文章：Mac-本地git配置，Win，Linux平台同理"><a href="#1-2-git安装和配置可参考文章：Mac-本地git配置，Win，Linux平台同理" class="headerlink" title="1.2 git安装和配置可参考文章：Mac-本地git配置，Win，Linux平台同理"></a>1.2 git安装和配置可参考文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/150703905">Mac-本地git配置</a>，Win，Linux平台同理</h2><h2 id="1-3-Mac安装hexo"><a href="#1-3-Mac安装hexo" class="headerlink" title="1.3 Mac安装hexo"></a>1.3 Mac安装hexo</h2><ul>
+<li><p>全局安装需要输入密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建博客的根文件夹，并初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> &lt;你的博客根文件夹&gt; </span><br><span class="line"><span class="comment"># eg: mkdir myBlog</span></span><br><span class="line">$ <span class="built_in">cd</span> &lt;你的文件夹&gt;</span><br><span class="line"><span class="comment"># eg: cd myBlog</span></span><br><span class="line"><span class="comment"># 后续命令都需要在这个文件夹中进行</span></span><br><span class="line">$ hexo init</span><br><span class="line"><span class="comment"># 博客初始化</span></span><br><span class="line">$ npm install</span><br><span class="line"><span class="comment"># 安装必备组件</span></span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，项目结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml <span class="comment"># 网站的配置文件 </span></span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds <span class="comment"># 生成文章的模版文件夹</span></span><br><span class="line">├── <span class="built_in">source</span>  <span class="comment"># 资源文件夹，除 _posts 文件，其他以下划线_开头的文件或者文件夹不会被编译打包到 public 文件夹</span></span><br><span class="line">    |   ├── _drafts <span class="comment"># 草稿文件</span></span><br><span class="line">    |   └── _posts <span class="comment"># 文章 Markdowm 文件 </span></span><br><span class="line">└── themes  <span class="comment"># 主题文件夹</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="1-4-Hexo的简单使用"><a href="#1-4-Hexo的简单使用" class="headerlink" title="1.4 Hexo的简单使用"></a>1.4 Hexo的简单使用</h2><ul>
+<li><p>安装完成之后可以通过以下俩命令进行本地调试，server会给出本地链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br><span class="line"><span class="comment"># INFO  Validating config</span></span><br><span class="line"><span class="comment"># INFO  Start processing</span></span><br><span class="line"><span class="comment"># INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开浏览器输入<code>http://localhost:4000/</code>，可以看到示例博客，在终端或者cmd中按<code>Ctrl  C</code>结束服务</p>
+</li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700555465.png" alt="image-20231121163100246"></p>
+<h1 id="2-正式编写博客"><a href="#2-正式编写博客" class="headerlink" title="2.正式编写博客"></a>2.正式编写博客</h1><ul>
+<li><p>使用以下命令新建一篇博客，md后缀名不用加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post <span class="string">&quot;your-first-blog&quot;</span></span><br><span class="line"><span class="comment"># $ hexo new [layout] &lt;title&gt;</span></span><br><span class="line"><span class="comment"># 您可以在命令中指定文章的布局（layout），默认为 post，可以通过修改 _config.yml 中的 default_layout 参数来指定默认布局。</span></span><br><span class="line"><span class="comment"># 创建新的博客以后，可以在文件夹中用markdown编辑器打开进行编写，例如typora，mweb，vscode等等</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo 有三种默认布局，post 、page 和 draft ，它们分别对应不同的路径。draft 是草稿的意思，如果你想写文章，但是又不想被看到，那么就可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这样会在 source/_draft 中新建一个 newdraft.md 文件</span></span><br><span class="line">$ hexo new draft newdraft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想预览草稿文件</span></span><br><span class="line">$ hexo server --draft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想将草稿文件发表到 post 中</span></span><br><span class="line">$ hexo publish draft newdraft</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="3-hexo更换主题"><a href="#3-hexo更换主题" class="headerlink" title="3.hexo更换主题"></a>3.hexo更换主题</h1><ul>
+<li>hexo官网的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题链接</a>，点击不同的链接可以进入主题的GitHub项目或者示例网站。</li>
+<li>里面有很多花哨的主题，也有简洁风格的，更换主题的方式建议按照所选择主题的GitHub中示例教程，常规操作如下：</li>
+</ul>
+<ol>
+<li>下载主题包</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入你的博客根文件夹</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/GitHub作者名/主题仓库名.git themes/主题仓库名</span><br><span class="line"><span class="comment"># 一般这条命令在主题的GitHub中作者均有提供</span></span><br><span class="line"><span class="comment"># 命令的意思是将这个主题下载到你的博客根文件夹下的themes文件夹中，这个themes文件夹专门存放各种主题</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>编辑博客根文件夹下的’_config.yml’文件，找到themes修改’theme: 主题名’，</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim _config.yml</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>查看新主题</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo cl</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br><span class="line"><span class="comment"># 浏览器进入 http://localhost:4000</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="4-发布到GitHub"><a href="#4-发布到GitHub" class="headerlink" title="4.发布到GitHub"></a>4.发布到GitHub</h1><ul>
+<li>首先需要新建一个GitHub仓库，存储后续发布的文章，如图所示；</li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700556023.png" alt="image-20231121164018989"></p>
+<ul>
+<li><p>要创建一个和你用户名相同的仓库，后面加.github.io，这样在部署到GitHub page的时候，才会被识别，</p>
+<p>也就是 <a href="https://xxxx.github.io，其中xxx就是你注册GitHub的用户名。例如我的仓库名：gggwb.github.io">https://xxxx.github.io，其中xxx就是你注册GitHub的用户名。例如我的仓库名：gggwb.github.io</a></p>
+</li>
+<li><p>这时候需要将Hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开博客根目录下的 _config.yml文件，这是博客的配置文件，在这里你可以修改与博客配置相关的各种信息。</p>
+</li>
+<li><p>修改根目录下的 _config.yml 文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span>  <span class="comment"># 使用 git 同步代码</span></span><br><span class="line">	<span class="attr">repository:</span> <span class="string">&lt;your-git-rep-url&gt;</span>  <span class="comment"># 你自己的 git 仓库地址</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span>  <span class="comment"># 默认采用 master 分支同步代码</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700556184.png" alt="image-20231121164300209"></p>
+<ul>
+<li><p>安装发布扩展包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
+<li><p>发布代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo cl <span class="comment"># 清除之前生成的静态文件</span></span><br><span class="line">$ hexo g <span class="comment"># 生成静态文件</span></span><br><span class="line">$ hexo d <span class="comment"># 发布代码到 git 远程仓库</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="5-部署到Vercel并自定义域名（可选）"><a href="#5-部署到Vercel并自定义域名（可选）" class="headerlink" title="5.部署到Vercel并自定义域名（可选）"></a>5.部署到Vercel并自定义域名（可选）</h1><ul>
+<li>这个时候对于没有域名的朋友已经可以用了，个人博客地址就是https:&#x2F;&#x2F;用户名.github.io</li>
+<li>对于有自定义域名需求的朋友，可以继续使用Vercel部署和自定义域名，当然GitHub本身也可以自定义域名，在仓库中设置即可，这个很简单，不多赘述。vercel的话，建议用GitHub登陆vercel.com，先建立一个账号，然后以下是部署的详细的步骤：</li>
+</ul>
+<ol>
+<li>在你的本地电脑上，确保已经安装了Vercel CLI。如果没有安装，可以通过运行以下命令来安装：</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vercel</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在Hexo项目根目录下，运行以下命令来生成静态文件：</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在Hexo项目根目录下，运行以下命令来部署到Vercel：</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ vercel</span><br><span class="line"><span class="comment"># Vercel CLI 32.5.5   这几行是输出，可以先预览效果</span></span><br><span class="line"><span class="comment"># 🔍  Inspect: https://vercel.com/gggwb/hexo-blog/Amcc3qKG256Y8Aq4QG9NPWDvZrpX [10s]</span></span><br><span class="line"><span class="comment"># ✅  Preview: https://hexo-blog-dp5p5juvl-gggwb.vercel.app [10s]</span></span><br><span class="line"><span class="comment"># 📝  To deploy to production (hexo-blog-pink-eight.vercel.app +1), run `vercel --prod`</span></span><br><span class="line">$ vercel --prod</span><br><span class="line"><span class="comment"># 配置到生产</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果是第一次使用Vercel，你需要进行登录和授权操作。按照命令行提示进行相应的操作。</p>
+</li>
+<li><p>在部署过程中，Vercel会询问你一些配置选项，包括项目名称、部署方式等。根据你的需求进行设置。（没有其他需求可以一路回车）</p>
+</li>
+<li><p>部署完成后，Vercel会提供一个部署后的URL，你可以通过该URL访问你的博客，这个URL是vercel提供的一个超长的域名，接下来可以替换为自己的域名。</p>
+</li>
+</ul>
+<ol start="4">
+<li>在博客根目录下新建一个文件’vercel.json’，在’alias’处输入你自己的域名:</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ vim vercel.json <span class="comment"># 新建文件的命令</span></span><br><span class="line"><span class="comment"># 输入以下内容：</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;public&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">&quot;routes&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;src&quot;</span>: <span class="string">&quot;/(.*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;dest&quot;</span>: <span class="string">&quot;public/<span class="variable">$1</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;alias&quot;</span>: <span class="string">&quot;blog.gwbiao.eu.org&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700557865.png" alt="image-20231121171101493"></p>
+<ol start="5">
+<li><p>该域名需要在腾讯云或者阿里云免费进行dns解析，登陆腾讯云&#x2F;搜索dns&#x2F;点击云解析dns</p>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558405.png" alt="image-20231121172001797"></p>
+</li>
+</ol>
+<ul>
+<li>点击控制台</li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558475.png" alt="image-20231121172112156"></p>
+<ul>
+<li>点击添加域名，新建一条cname如下</li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558548.png" alt="image-20231121172225382"></p>
+<ul>
+<li>在vercel中，点击你的博客&#x2F;Settings&#x2F;Domains&#x2F;Add这里添加自己的域名；点击add以后，会自动刷新看该域名是否被解析，也就是需要配置腾讯云的云解析DNS，配置内容也给出了，我这里是给个示例，没有在腾讯云解析，所以报了无效配置，按上面流程来的话，应该是正常配置的。</li>
+</ul>
+<p><img src="https://dsm.gwbiao.eu.org:8089/i/202311/202311211700558839.png" alt="image-20231121172716322"></p>
+<ul>
+<li><p>注：vercel也可以在dashboard中直接导入GitHub仓库。</p>
+</li>
+<li><p>部署到Vercel和GitHub Pages有以下几个区别：</p>
+<ol>
+<li>部署方式：Vercel是一个全球性的现代化部署平台，它支持多种项目类型的部署，包括静态网站、单页面应用、服务器端渲染应用等。它提供了更多的灵活性和功能，如自动构建、环境变量管理、预渲染等。而GitHub Pages主要用于托管静态网站，部署方式相对简单。</li>
+<li>自定义域名：Vercel允许你使用自定义域名来访问你的部署项目，包括绑定你自己的域名、配置HTTPS等。而GitHub Pages也支持自定义域名，但需要进行一些额外的配置，如添加CNAME文件和进行DNS解析。</li>
+<li>构建和部署速度：Vercel在构建和部署方面通常更快，特别是对于大型项目或需要进行构建的项目。GitHub Pages的构建和部署可能需要更长的时间，特别是在首次部署时。</li>
+<li>集成与扩展性：Vercel提供了与其他服务（如GitHub、GitLab、Bitbucket等）的集成，可以方便地与代码仓库进行同步和自动部署。它还提供了更多的扩展性，如Webhooks、Serverless Functions等。而GitHub Pages则更紧密地与GitHub仓库集成，可以直接从GitHub仓库进行部署。</li>
+</ol>
+<p>总体而言，Vercel提供了更多的功能和灵活性，适用于更复杂的项目和需求。而GitHub Pages则更适合简单的静态网站部署，特别是对于使用GitHub作为代码仓库的用户来说。选择哪种部署方式取决于你的项目需求和个人偏好。</p>
+</li>
+</ul>
+<h1 id="6-一些Hexo的常用命令"><a href="#6-一些Hexo的常用命令" class="headerlink" title="6.一些Hexo的常用命令"></a>6.一些Hexo的常用命令</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hexo -v</td>
+<td align="left">查看 hexo 版本号</td>
+</tr>
+<tr>
+<td align="left">hexo cl 等同于 hexo clean</td>
+<td align="left">清除生成的静态文件</td>
+</tr>
+<tr>
+<td align="left">hexo g 等同于 hexo generate</td>
+<td align="left">生成静态页面至 public 页面</td>
+</tr>
+<tr>
+<td align="left">hexo s 等同于 hexo server</td>
+<td align="left">生成本地预览</td>
+</tr>
+<tr>
+<td align="left">hexo d 等同于 hexo deploy</td>
+<td align="left">部署（需要安装 npm install hexo-deployer-git –save 插件包）</td>
+</tr>
+</tbody></table>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Tp1vwolTUYe_Sh03NzPZug">Hexo+Github+Netlify博客搭建教程（原创 Leo 程序员Leo 2023-10-14 01:13 发表于江苏）</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/g8C-jQMgiV_p2O7YOchzxg">使用 Hexo 写个人博客（原创 Alex南山竹  蒲东平  2023-11-21 00:54 发表于上海）</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://gggwb.github.io/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/" title="保姆级教程搭建免费博客（Hexo+GitHub+Vercel+自定义域名+主题）" target="_blank" rel="external">http://gggwb.github.io/2023/11/21/保姆级教程搭建免费博客（Hexo-GitHub-Vercel-自定义域名-主题）/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/gggwb" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/gggwb" target="_blank"><span class="text-dark">浪浪山小郎君</span><small class="ml-1x">Developer</small></a></h3>
+        <div>Dream big, work hard, stay focused.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/01/14/Docker%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="Docker必知必会"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/11/20/%E5%88%A9%E7%94%A8%E5%85%B0%E7%A9%BA%E5%9B%BE%E5%BA%8A%E5%9C%A8%E7%BE%A4%E6%99%96Docker%E4%B8%AD%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E5%9B%BE%E5%BA%8A/" title="利用兰空图床在群晖Docker中搭建私有图床"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gggwb" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
