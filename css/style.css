@@ -9215,3 +9215,15 @@ body.okayNav-loaded {
     max-height: 200px;
   }
 }
+
+@font-face {
+  font-family: 'LuoxiaGuwu';
+  src: url('/fonts/LXGWBrightGB-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 设置全局字体 */
+body {
+  font-family: 'LuoxiaGuwu', serif;
+}
