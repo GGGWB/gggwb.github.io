@@ -17,16 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>标签: 图床 | 欢迎来到浪浪山</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Monster">
-<meta property="og:url" content="http://gggwb.github.io/tags/%E5%9B%BE%E5%BA%8A/index.html">
+  <title>解决VPN连接群晖时无法Ping通的问题 | 欢迎来到浪浪山</title>
+  <meta name="description" content="背景介绍在使用ikuai主路由及其VPN功能连接群晖NAS时，遇到了群晖无法Ping通的问题。其他设备如PVE服务器和电脑均可正常访问，但Ping群晖失败，导致网络访问受阻。经过多轮排查，最终定位到群晖防火墙规则未更新，导致VPN网段无法放行。  发现问题 PVE服务器可以Ping通群晖和ikuai主路由。 设备均由ikuai分配IP。 电脑可以访问ikuai主路由和PVE，但Ping不通群晖。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决VPN连接群晖时无法Ping通的问题">
+<meta property="og:url" content="http://gggwb.github.io/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Monster">
+<meta property="og:description" content="背景介绍在使用ikuai主路由及其VPN功能连接群晖NAS时，遇到了群晖无法Ping通的问题。其他设备如PVE服务器和电脑均可正常访问，但Ping群晖失败，导致网络访问受阻。经过多轮排查，最终定位到群晖防火墙规则未更新，导致VPN网段无法放行。  发现问题 PVE服务器可以Ping通群晖和ikuai主路由。 设备均由ikuai分配IP。 电脑可以访问ikuai主路由和PVE，但Ping不通群晖。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-18T15:42:52.000Z">
+<meta property="article:modified_time" content="2025-05-18T15:45:29.025Z">
 <meta property="article:author" content="郭文彪">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="ikuai">
+<meta property="article:tag" content="OpenVPN">
+<meta property="article:tag" content="群晖">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://gggwb.github.io/tags/%E5%9B%BE%E5%BA%8A/index.html">
+  <link rel="canonical" href="http://gggwb.github.io/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
   
@@ -340,116 +348,253 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: 图床</h1>
-      <p class="text-muted hidden-xs">共 2 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/网络/">网络</a></li>
-          
-          <li><a href="/tags/DDNS/">DDNS</a></li>
-          
-          <li><a href="/tags/SSL/">SSL</a></li>
-          
-          <li><a href="/tags/Docker/">Docker</a></li>
-          
-          <li><a href="/tags/Hexo/">Hexo</a></li>
-          
-          <li><a href="/tags/博客美化/">博客美化</a></li>
-          
-          <li><a href="/tags/落霞孤鹜/">落霞孤鹜</a></li>
-          
-          <li><a href="/tags/个人博客/">个人博客</a></li>
-          
-          <li><a href="/tags/iOS巨魔商店/">iOS巨魔商店</a></li>
-          
-          <li><a href="/tags/图床/">图床</a></li>
-          
-          <li><a href="/tags/ikuai/">ikuai</a></li>
-          
-          <li><a href="/tags/OpenVPN/">OpenVPN</a></li>
-          
-          <li><a href="/tags/ipv6/">ipv6</a></li>
-          
-          <li><a href="/tags/内网穿透/">内网穿透</a></li>
-          
-          <li><a href="/tags/生活和数学/">生活和数学</a></li>
-          
-          <li><a href="/tags/群晖/">群晖</a></li>
-          
-          <li><a href="/tags/NAS/">NAS</a></li>
-          
-          <li><a href="/tags/绿联/">绿联</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-解决VPN连接群晖时无法Ping通的问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
         
-<div class="col-md-6">
-    
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2025-02-07T09:00:04.000Z" itemprop="datePublished">2025-02-07</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2025/02/07/%E4%BD%BF%E7%94%A8GitHub-JsDeliver%E5%8A%A0%E9%80%9F%E5%81%9A%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">使用GitHub+JsDelivr加速做免费图床</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="label label-default mb">个人博客</a>
-     
-      <a href="/tags/%E5%9B%BE%E5%BA%8A/" class="label label-default mb">图床</a>
-     
-     
-   </div>
-   
-</article>
+  
+    <h1 class="article-title" itemprop="name">
+      解决VPN连接群晖时无法Ping通的问题
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+	  <time datetime="2025-05-18T15:42:52.000Z" itemprop="datePublished">2025-05-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a>, <a class="article-tag-link-link" href="/tags/ikuai/" rel="tag">ikuai</a>, <a class="article-tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>, <a class="article-tag-link-link" href="/tags/%E7%BE%A4%E6%99%96/" rel="tag">群晖</a>
+  </span>
 
 
-</div>
-
-<div class="col-md-6">
-    
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2023-11-20T09:03:27.000Z" itemprop="datePublished">2023-11-20</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2023/11/20/%E5%88%A9%E7%94%A8%E5%85%B0%E7%A9%BA%E5%9B%BE%E5%BA%8A%E5%9C%A8%E7%BE%A4%E6%99%96Docker%E4%B8%AD%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E5%9B%BE%E5%BA%8A/">利用兰空图床在群晖Docker中搭建私有图床</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="label label-default mb">个人博客</a>
-     
-      <a href="/tags/%E5%9B%BE%E5%BA%8A/" class="label label-default mb">图床</a>
-     
-      <a href="/tags/%E7%BE%A4%E6%99%96/" class="label label-default mb">群晖</a>
-     
-     
-   </div>
-   
-</article>
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
 
 
-</div>
-
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">评论</a></span>
+        
       </div>
     </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>在使用ikuai主路由及其VPN功能连接群晖NAS时，遇到了群晖无法Ping通的问题。其他设备如PVE服务器和电脑均可正常访问，但Ping群晖失败，导致网络访问受阻。经过多轮排查，最终定位到群晖防火墙规则未更新，导致VPN网段无法放行。</p>
+<hr>
+<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><ul>
+<li>PVE服务器可以Ping通群晖和ikuai主路由。</li>
+<li>设备均由ikuai分配IP。</li>
+<li>电脑可以访问ikuai主路由和PVE，但Ping不通群晖。</li>
+<li>在ikuai设备上，ikuai也可以Ping通群晖。</li>
+<li>连接ikuai下的子路由时，可以Ping通群晖。</li>
+<li>连接外网，再开启连接ikuai的VPN时，能访问ikuai主路由及其下各种设备，但Ping不通群晖。</li>
+</ul>
+<hr>
+<h2 id="排查过程及误区（按时间顺序）"><a href="#排查过程及误区（按时间顺序）" class="headerlink" title="排查过程及误区（按时间顺序）"></a>排查过程及误区（按时间顺序）</h2><ol>
+<li><p><strong>尝试修改虚拟机网卡类型为e1000</strong>  </p>
+<ul>
+<li>以为虚拟机的虚拟网卡类型可能导致网络异常，尝试将PVE中的虚拟机网卡修改为e1000类型。  </li>
+<li>修改后情况无改善，怀疑不是虚拟网卡驱动问题。</li>
+</ul>
+</li>
+<li><p><strong>尝试直连物理网口</strong>  </p>
+<ul>
+<li>将PVE服务器的虚拟机直接桥接至物理网口，排除桥接层的问题。  </li>
+<li>依旧无法Ping通群晖，排除虚拟化桥接或网卡物理链路问题。</li>
+</ul>
+</li>
+<li><p><strong>确认网络连接正常</strong>  </p>
+<ul>
+<li>PVE能Ping通ikuai主路由和其他设备，说明路由转发和网络链路正常。  </li>
+<li>通过ikuai的界面确认ikuai能Ping通群晖，进一步说明群晖网络是通的。</li>
+</ul>
+</li>
+<li><p><strong>排查本地ARP缓存</strong>  </p>
+<ul>
+<li>查看本地ARP表发现群晖IP的MAC地址未出现，尝试删除ARP缓存失败，提示IP未被缓存。  </li>
+<li>说明Ping请求未收到群晖回复，或被防火墙丢弃。</li>
+</ul>
+</li>
+<li><p><strong>VPN连接时能访问ikuai及其他设备，但Ping不通群晖</strong>  </p>
+<ul>
+<li>确认VPN隧道正常，访问其他设备没问题。  </li>
+<li>唯独群晖访问异常，怀疑群晖的防火墙规则影响。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="关键发现"><a href="#关键发现" class="headerlink" title="关键发现"></a>关键发现</h2><ul>
+<li>之前修改过VPN网段，但未更新群晖防火墙规则中放行的VPN网段，导致新VPN网段的流量被拒绝。</li>
+</ul>
+<hr>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>进入群晖防火墙管理界面，更新并放行新的VPN网段IP地址范围。  </li>
+<li>重新连接VPN，确认能正常Ping通群晖。  </li>
+<li>检查并确认群晖防火墙规则与当前网络结构保持一致。</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>这次问题主要源于网络策略未同步更新，防火墙规则中缺少新VPN网段放行，导致Ping请求被阻断。  </li>
+<li>网络排查过程中多次尝试修改网卡类型、桥接方式，虽未解决问题，但帮助确认了网络物理链路和虚拟化配置无误。  </li>
+<li>VPN连接正常且其他设备可达，最终将问题锁定到群晖防火墙策略。  </li>
+<li>建议每次网络结构变更后及时更新相关设备防火墙规则，防止类似访问问题。</li>
+</ul>
+<hr>
+<h2 id="经验与建议"><a href="#经验与建议" class="headerlink" title="经验与建议"></a>经验与建议</h2><ul>
+<li>保持设备配置文档和变更日志，方便后续回溯。  </li>
+<li>排查网络时，分层次检查物理链路、虚拟机配置、路由策略、防火墙规则。  </li>
+<li>对于VPN环境，重点关注防火墙是否允许新的VPN网段访问。</li>
+</ul>
+<hr>
+<h2 id="相关命令及信息摘录"><a href="#相关命令及信息摘录" class="headerlink" title="相关命令及信息摘录"></a>相关命令及信息摘录</h2><pre><code class="bash"># 查看ARP缓存
+arp -a
+
+# 删除特定IP的ARP缓存（未找到记录示例）
+arp -d 192.168.78.239
+# delete: cannot locate 192.168.78.239
+</code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://gggwb.github.io/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决VPN连接群晖时无法Ping通的问题" target="_blank" rel="external">http://gggwb.github.io/2025/05/18/解决VPN连接群晖时无法Ping通的问题/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/gggwb" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/gggwb" target="_blank"><span class="text-dark">浪浪山小郎君</span><small class="ml-1x">Developer</small></a></h3>
+        <div>Dream big, work hard, stay focused.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2025/05/16/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%A6%8F%E7%89%B9%E5%AE%9A%E5%BE%8B%E7%9A%84%E6%80%9D%E8%80%83%E5%92%8CChatGPT%E7%9A%84%E5%9B%9E%E7%AD%94/" title="本福特定律探讨：从原理到进制的深入理解"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -510,6 +655,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
