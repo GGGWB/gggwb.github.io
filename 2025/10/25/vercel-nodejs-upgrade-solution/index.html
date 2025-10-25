@@ -17,21 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Hexo博客文件及部署环境无缝迁移新电脑 | 欢迎来到浪浪山</title>
-  <meta name="description" content="1.简介本人有两台电脑，一台是MacbookPro 2017（Intel），一台是MacBook Pro 14（M1），之前搭建的博客更新环境是在mbp2017上，包括  node：作为 Hexo 运行的基础环境，为整个博客系统提供支撑。 hexo：博客的核心引擎，负责将我们撰写的 Markdown 文件转化为精美的网页。 git：用于版本控制，方便我管理博客文件的变更历史，确保数据安全。 ver">
+  <title>解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x） | 欢迎来到浪浪山</title>
+  <meta name="description" content="问题背景今天在使用 Vercel CLI 部署 Hexo 博客时，遇到了一个 Node.js 版本兼容性问题： 1Error: Node.js Version &quot;18.x&quot; is discontinued and must be upgraded. Please set Node.js Version to 22.x in your Project Settings to us">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客文件及部署环境无缝迁移新电脑">
-<meta property="og:url" content="http://gggwb.github.io/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/index.html">
+<meta property="og:title" content="解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x）">
+<meta property="og:url" content="http://gggwb.github.io/2025/10/25/vercel-nodejs-upgrade-solution/index.html">
 <meta property="og:site_name" content="Monster">
-<meta property="og:description" content="1.简介本人有两台电脑，一台是MacbookPro 2017（Intel），一台是MacBook Pro 14（M1），之前搭建的博客更新环境是在mbp2017上，包括  node：作为 Hexo 运行的基础环境，为整个博客系统提供支撑。 hexo：博客的核心引擎，负责将我们撰写的 Markdown 文件转化为精美的网页。 git：用于版本控制，方便我管理博客文件的变更历史，确保数据安全。 ver">
+<meta property="og:description" content="问题背景今天在使用 Vercel CLI 部署 Hexo 博客时，遇到了一个 Node.js 版本兼容性问题： 1Error: Node.js Version &quot;18.x&quot; is discontinued and must be upgraded. Please set Node.js Version to 22.x in your Project Settings to us">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-08T11:07:56.000Z">
-<meta property="article:modified_time" content="2025-02-08T03:37:29.690Z">
+<meta property="article:published_time" content="2025-10-25T15:35:00.000Z">
+<meta property="article:modified_time" content="2025-10-25T15:55:05.654Z">
 <meta property="article:author" content="郭文彪">
-<meta property="article:tag" content="个人博客">
+<meta property="article:tag" content="Vercel">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="部署">
+<meta property="article:tag" content="问题解决">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://gggwb.github.io/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/index.html">
+  <link rel="canonical" href="http://gggwb.github.io/2025/10/25/vercel-nodejs-upgrade-solution/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
   
@@ -348,14 +351,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Hexo博客文件及部署环境无缝迁移新电脑" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-vercel-nodejs-upgrade-solution" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo博客文件及部署环境无缝迁移新电脑
+      解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x）
     </h1>
   
 
@@ -363,20 +366,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/" class="article-date">
-	  <time datetime="2025-01-08T11:07:56.000Z" itemprop="datePublished">2025-01-08</time>
+	<a href="/2025/10/25/vercel-nodejs-upgrade-solution/" class="article-date">
+	  <time datetime="2025-10-25T15:35:00.000Z" itemprop="datePublished">2025-10-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</a>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E8%BF%90%E7%BB%B4/">技术运维</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a>
+	<a class="article-tag-link-link" href="/tags/Node-js/" rel="tag">Node.js</a>, <a class="article-tag-link-link" href="/tags/Vercel/" rel="tag">Vercel</a>, <a class="article-tag-link-link" href="/tags/%E9%83%A8%E7%BD%B2/" rel="tag">部署</a>, <a class="article-tag-link-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a>
   </span>
 
 
@@ -389,34 +392,118 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/10/25/vercel-nodejs-upgrade-solution/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>本人有两台电脑，一台是MacbookPro 2017（Intel），一台是MacBook Pro 14（M1），之前搭建的博客更新环境是在mbp2017上，包括</p>
-<ul>
-<li><strong>node：</strong>作为 Hexo 运行的基础环境，为整个博客系统提供支撑。</li>
-<li><strong>hexo：</strong>博客的核心引擎，负责将我们撰写的 Markdown 文件转化为精美的网页。</li>
-<li><strong>git：</strong>用于版本控制，方便我管理博客文件的变更历史，确保数据安全。</li>
-<li><strong>vercel：</strong>作为静态网站的部署平台，让我的博客能够快速且稳定地在互联网上展示。</li>
-<li><strong>typora：</strong>一款简洁高效的本地博客编辑器，可以联动picgo上传图片，极大提升写作体验。</li>
-<li><strong>picgo：</strong>专门用于图片上传，轻松搞定图片资源的管理。</li>
-<li><strong>cleanshot X：</strong>强大的截图工具，为博客创作提供丰富的素材采集方式。</li>
-<li><strong>lankong：</strong>我的私有图床，保障图片存储与调用的高效性。<br>在 GitHub 上，用一个仓库实现了双重功能。仓库的 master 分支存放 Hexo 博客的静态文件，通过 GitHub Pages 能直接展示博客内容，每次编辑完成后，执行 hexo d 命令，将最新的静态文件上传更新。main 分支则保存了博客的全部源码，像 source 文件夹里的 md 文件（也就是博客文章的原始内容）、themes 文件夹（存放博客主题相关文件）等。这个 main 分支是我在 GitHub 上新建后，手动将本地文件推送上去的，实现了博客展示与文件托管在同一仓库的便捷管理。</li>
-</ul>
-<h2 id="2-迁移"><a href="#2-迁移" class="headerlink" title="2.迁移"></a>2.迁移</h2><p>后来想在 M1 电脑上部署，拉取 main 分支后得重建环境，摸索出的流程如下：</p>
+        <h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>今天在使用 Vercel CLI 部署 Hexo 博客时，遇到了一个 Node.js 版本兼容性问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Node.js Version &quot;18.x&quot; is discontinued and must be upgraded. Please set Node.js Version to 22.x in your Project Settings to use Node.js 22.</span><br></pre></td></tr></table></figure>
+
+<p>这说明 Vercel 已经停止支持 Node.js 18.x 版本，需要升级到 22.x。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>Vercel 平台会定期更新其支持的 Node.js 版本，当某个版本被标记为 “discontinued”（已停止支持）时，就必须升级到更新的版本。这是一个常见的云平台维护操作。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一：通过-Vercel-Dashboard（推荐）"><a href="#方案一：通过-Vercel-Dashboard（推荐）" class="headerlink" title="方案一：通过 Vercel Dashboard（推荐）"></a>方案一：通过 Vercel Dashboard（推荐）</h3><p>这是最直接和可靠的解决方法：</p>
 <ol>
-<li><strong>git安装并配置ssh key</strong>：与 GitHub 安全通信。</li>
-<li><strong>node安装及检查</strong>：为 Hexo 准备运行环境。</li>
-<li><strong>Hexo安装</strong>（具体操作<a target="_blank" rel="noopener" href="https://blog.gwbiao.eu.org/2023/11/21/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%EF%BC%88Hexo-GitHub-Vercel-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-%E4%B8%BB%E9%A2%98%EF%BC%89/">见这里</a>）</li>
-<li><strong>生成依赖文件</strong>：新建文件夹，cd进入，执行hexo init得到package.json，它记录新电脑的环境依赖 。</li>
-<li><strong>替换依赖文件</strong>：git clone仓库，进入项目文件夹，git checkout main，把上一步的package.json复制到此覆盖原文件，旧文件是旧电脑的依赖信息。这步可让我费了不少功夫。</li>
-<li><strong>验证 hexo 命令</strong>：此时在项目文件夹就能执行 hexo 命令。</li>
-<li><strong>安装发布扩展包</strong>：参照上一篇文章操作。</li>
-<li><strong>部署到 vercel</strong>：同样参照上一篇，按 vercel 命令提示操作。<br>按照这些步骤，就能在新电脑上成功搭建 Hexo 博客环境，实现迁移。要是有问题，欢迎留言交流。</li>
+<li>访问 Vercel 项目 Dashboard：<a target="_blank" rel="noopener" href="https://vercel.com/gggwbs-projects/gggwb-github-io">https://vercel.com/gggwbs-projects/gggwb-github-io</a></li>
+<li>进入项目 <strong>Settings</strong>（设置）</li>
+<li>找到 <strong>Build &amp; Development Settings</strong>（构建和开发设置）</li>
+<li>将 <strong>Node.js Version</strong> 从 “18.x” 改为 “22.x”</li>
+<li>保存设置并重新部署</li>
 </ol>
+<h3 id="方案二：通过配置文件"><a href="#方案二：通过配置文件" class="headerlink" title="方案二：通过配置文件"></a>方案二：通过配置文件</h3><p>虽然主要通过 Dashboard 设置，但也可以在项目中添加相关配置文件作为最佳实践：</p>
+<h4 id="1-创建-nvmrc-文件"><a href="#1-创建-nvmrc-文件" class="headerlink" title="1. 创建 .nvmrc 文件"></a>1. 创建 <code>.nvmrc</code> 文件</h4><p>在项目根目录创建 <code>.nvmrc</code> 文件指定 Node.js 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;22&quot;</span> &gt; .nvmrc</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-更新-vercel-json-配置"><a href="#2-更新-vercel-json-配置" class="headerlink" title="2. 更新 vercel.json 配置"></a>2. 更新 <code>vercel.json</code> 配置</h4><p>在 <code>vercel.json</code> 中添加 Node.js 环境变量：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;public&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;routes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/(.*)&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;public/$1&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;alias&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blog.gwbiao.eu.org&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;buildCommand&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run build&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;outputDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;public&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;env&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;NODE_VERSION&quot;</span><span class="punctuation">:</span> <span class="string">&quot;22.x&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="1-检查当前项目"><a href="#1-检查当前项目" class="headerlink" title="1. 检查当前项目"></a>1. 检查当前项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/gggwb/Documents/gggwb.github.io</span><br><span class="line"><span class="built_in">ls</span> -la | grep vercel</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-更新配置文件"><a href="#2-更新配置文件" class="headerlink" title="2. 更新配置文件"></a>2. 更新配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 .nvmrc 文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;22&quot;</span> &gt; .nvmrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 vercel.json（已配置好）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-提交更改"><a href="#3-提交更改" class="headerlink" title="3. 提交更改"></a>3. 提交更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git add .nvmrc vercel.json</span><br><span class="line">git commit -m <span class="string">&quot;Upgrade Node.js version to 22.x for Vercel deployment</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- Add .nvmrc file to specify Node.js 22</span></span><br><span class="line"><span class="string">- Update vercel.json with Node.js environment variable</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">🤖 Generated with [Claude Code](https://claude.com/claude-code)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Co-Authored-By: Claude &lt;noreply@anthropic.com&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-重新部署"><a href="#4-重新部署" class="headerlink" title="4. 重新部署"></a>4. 重新部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vercel --prod</span><br></pre></td></tr></table></figure>
+
+<h2 id="遇到的额外问题：Hexo-主题兼容性"><a href="#遇到的额外问题：Hexo-主题兼容性" class="headerlink" title="遇到的额外问题：Hexo 主题兼容性"></a>遇到的额外问题：Hexo 主题兼容性</h2><p>在 Node.js 版本升级后，还遇到了 Hexo 7.0.0 主题模板的兼容性问题。</p>
+<h3 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h3><p>执行 <code>hexo g</code> 命令时出现错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">TypeError: /Users/gggwb/Documents/gggwb.github.io/themes/pure/layout/_partial/post/category.ejs:4</span><br><span class="line">    &lt;%- list_categories(post.categories, &#123;</span><br><span class="line">      show_count: false,</span><br><span class="line">      class: &#x27;article-category&#x27;,</span><br><span class="line">      style: &#x27;none&#x27;,</span><br><span class="line">      separator: &#x27;►&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line"></span><br><span class="line">object is not a function</span><br></pre></td></tr></table></figure>
+
+<p>以及类似的 <code>list_tags</code> 函数错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TypeError: /Users/gggwb/Documents/gggwb.github.io/themes/pure/layout/_partial/post/tag.ejs:4</span><br><span class="line">    &lt;%- list_tags(post.tags, &#123;</span><br><span class="line">       show_count: false,</span><br><span class="line">       style: &#x27;link&#x27;,</span><br><span class="line">       class: &#x27;article-tag&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line"></span><br><span class="line">tags.toArray is not a function</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="问题分析"></a>问题分析</h3><p>这是 Hexo 7.0.0 版本与 Node.js 22.x 升级后的兼容性问题：</p>
+<ol>
+<li><strong>API 参数格式要求</strong>：<code>list_categories</code> 和 <code>list_tags</code> 辅助函数在 Node.js 22.x 环境下对参数格式要求更严格</li>
+<li><strong>错误的参数格式</strong>：将参数包装在对象中会导致显示全站所有的分类和标签，而不是当前文章的分类和标签</li>
+</ol>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>重要提示</strong>：正确的格式是保持原有的参数格式，即将文章的分类&#x2F;标签作为第一个参数，选项作为第二个参数。</p>
+<h4 id="1-修复分类模板"><a href="#1-修复分类模板" class="headerlink" title="1. 修复分类模板"></a>1. 修复分类模板</h4><p>文件位置：<code>themes/pure/layout/_partial/post/category.ejs</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 正确的格式（保持原有格式） --&gt;</span><br><span class="line">&lt;% if (post.categories &amp;&amp; post.categories.length)&#123; %&gt;</span><br><span class="line">  &lt;span class=&quot;article-category&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;icon icon-folder&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;%- list_categories(post.categories, &#123;</span><br><span class="line">      show_count: false,</span><br><span class="line">      class: &#x27;article-category&#x27;,</span><br><span class="line">      style: &#x27;none&#x27;,</span><br><span class="line">      separator: &#x27;►&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- ❌ 错误的格式（会导致显示全部分类） --&gt;</span><br><span class="line">&lt;% if (post.categories &amp;&amp; post.categories.length)&#123; %&gt;</span><br><span class="line">  &lt;span class=&quot;article-category&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;icon icon-folder&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;%- list_categories(&#123;</span><br><span class="line">      categories: post.categories,</span><br><span class="line">      show_count: false,</span><br><span class="line">      class: &#x27;article-category&#x27;,</span><br><span class="line">      style: &#x27;none&#x27;,</span><br><span class="line">      separator: &#x27;►&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-修复标签模板"><a href="#2-修复标签模板" class="headerlink" title="2. 修复标签模板"></a>2. 修复标签模板</h4><p>文件位置：<code>themes/pure/layout/_partial/post/tag.ejs</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 正确的格式（保持原有格式） --&gt;</span><br><span class="line">&lt;% if (post.tags &amp;&amp; post.tags.length)&#123; %&gt;</span><br><span class="line">  &lt;span class=&quot;article-tag&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;icon icon-tags&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;%- list_tags(post.tags, &#123;</span><br><span class="line">      show_count: false,</span><br><span class="line">      style: &#x27;link&#x27;,</span><br><span class="line">      class: &#x27;article-tag&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- ❌ 错误的格式（会导致显示全部标签） --&gt;</span><br><span class="line">&lt;% if (post.tags &amp;&amp; post.tags.length)&#123; %&gt;</span><br><span class="line">  &lt;span class=&quot;article-tag&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;icon icon-tags&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;%- list_tags(&#123;</span><br><span class="line">      tags: post.tags,</span><br><span class="line">      show_count: false,</span><br><span class="line">      style: &#x27;link&#x27;,</span><br><span class="line">      class: &#x27;article-tag&#x27;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证修复结果"><a href="#验证修复结果" class="headerlink" title="验证修复结果"></a>验证修复结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>修复后应该能看到正常的生成输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 70 ms</span><br><span class="line">INFO  Generated: posts/vercel-nodejs-upgrade-solution.html</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  18 files generated in 97 ms</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><p>部署完成后，可以通过以下方式验证：</p>
+<h3 id="1-检查部署状态"><a href="#1-检查部署状态" class="headerlink" title="1. 检查部署状态"></a>1. 检查部署状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vercel <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-测试网站访问"><a href="#2-测试网站访问" class="headerlink" title="2. 测试网站访问"></a>2. 测试网站访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -I https://blog.gwbiao.eu.org</span><br></pre></td></tr></table></figure>
+
+<p>正常情况下应该返回 <code>HTTP/2 200</code> 状态码。</p>
+<h3 id="3-查看部署日志"><a href="#3-查看部署日志" class="headerlink" title="3. 查看部署日志"></a>3. 查看部署日志</h3><p>通过 Vercel Dashboard 查看部署日志，确认没有版本错误。</p>
+<h3 id="4-验证-Hexo-生成"><a href="#4-验证-Hexo-生成" class="headerlink" title="4. 验证 Hexo 生成"></a>4. 验证 Hexo 生成</h3><p>确保本地 Hexo 生成没有错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键要点"><a href="#关键要点" class="headerlink" title="关键要点"></a>关键要点</h2><ol>
+<li><strong>定期关注版本更新</strong>：云平台会定期更新支持的运行时版本，需要及时跟进。</li>
+<li><strong>配置文件最佳实践</strong>：虽然主要通过 Dashboard 设置，但在项目中维护配置文件是个好习惯。</li>
+<li><strong>主题兼容性检查</strong>：Node.js 版本升级后，要检查 Hexo 主题模板的兼容性，特别是辅助函数的参数格式。</li>
+<li><strong>测试验证</strong>：升级后一定要测试网站功能是否正常，包括本地生成和线上部署。</li>
+<li><strong>备份配置</strong>：在修改配置前，建议备份原有的配置文件。</li>
+</ol>
+<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>✅ <strong>问题成功解决</strong></p>
+<ul>
+<li>Node.js 版本从 18.x 升级到 22.x</li>
+<li>修复了 Hexo 7.0.0 主题模板兼容性问题</li>
+<li>网站正常部署和访问</li>
+<li>自定义域名 <code>https://blog.gwbiao.eu.org</code> 工作正常</li>
+<li>HTTP 状态码：200 OK</li>
+<li>Hexo 本地生成正常：18 个文件成功生成</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Vercel 的 Node.js 版本升级是一个常规的维护操作，但可能会带来一系列兼容性问题。通过 Dashboard 设置是最简单可靠的方法，同时配合项目中的配置文件可以确保项目的可维护性。</p>
+<p><strong>本次升级遇到的问题链：</strong></p>
+<ol>
+<li>Vercel 平台 Node.js 版本过期 → 需要升级到 22.x</li>
+<li>Node.js 22.x 严格检查 → Hexo 主题模板 API 兼容性问题</li>
+<li>主题辅助函数参数格式变化 → 错误修复导致显示全站标签和分类</li>
+<li>重新分析问题 → 保持原有参数格式，修复显示错误</li>
+</ol>
+<p><strong>解决思路：</strong></p>
+<ul>
+<li>逐个排查错误信息</li>
+<li>理解版本升级带来的 API 变化</li>
+<li><strong>重要</strong>：测试修复后的效果，确保没有引入新问题</li>
+<li>全面测试验证修复结果，包括标签和分类的显示</li>
+</ul>
+<p><strong>经验教训：</strong></p>
+<ul>
+<li>在解决兼容性问题时，不要盲目修改参数格式</li>
+<li>修复后一定要验证实际效果，避免引入新问题</li>
+<li>保持原有格式往往是最好的解决方案</li>
+</ul>
+<p>及时处理这类问题可以保证网站的稳定运行，同时也能积累版本升级的经验。</p>
+<hr>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://vercel.com/docs/concepts/functions/serverless-functions/runtimes">Vercel Node.js 版本文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js 官方版本信息</a></li>
+</ul>
 
       
     </div>
@@ -426,7 +513,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://gggwb.github.io/2025/01/08/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%8F%8A%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB%E6%96%B0%E7%94%B5%E8%84%91/" title="Hexo博客文件及部署环境无缝迁移新电脑" target="_blank" rel="external">http://gggwb.github.io/2025/01/08/Hexo博客文件及部署环境无缝迁移新电脑/</a>
+      <a href="http://gggwb.github.io/2025/10/25/vercel-nodejs-upgrade-solution/" title="解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x）" target="_blank" rel="external">http://gggwb.github.io/2025/10/25/vercel-nodejs-upgrade-solution/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -472,13 +559,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2025/02/07/%E4%BD%BF%E7%94%A8GitHub-JsDeliver%E5%8A%A0%E9%80%9F%E5%81%9A%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/" title="使用GitHub+JsDelivr加速做免费图床"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2024/12/23/DDNS%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B8%80%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0SSL%E8%AF%81%E4%B9%A6/" title="DDNS必备之一分钟自动更新SSL证书"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2025/10/23/ipv6-%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="macOS IPv6路由问题排查与修复实战"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
