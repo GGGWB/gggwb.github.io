@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>从零到一：我的第一个量化交易策略开发实战 | 欢迎来到浪浪山</title>
+  <meta name="description" content="“代码不会说谎，但市场会教你谦逊。” —— 一个量化新手的感悟  🌟 前言：量化之路的起点作为一名编程爱好者，我一直对量化交易充满好奇。看着那些复杂的数学模型和算法在金融市场中驰骋，总觉得自己离这个领域很遥远。直到今天，我完成了自己的第一个完整的量化交易策略——基于Backtrader框架的农业银行(601288)交易策略。 这篇文章记录了我从环境搭建到策略开发的全过程，包括遇到的坑、解决思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零到一：我的第一个量化交易策略开发实战">
+<meta property="og:url" content="http://gggwb.github.io/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/index.html">
+<meta property="og:site_name" content="Monster">
+<meta property="og:description" content="“代码不会说谎，但市场会教你谦逊。” —— 一个量化新手的感悟  🌟 前言：量化之路的起点作为一名编程爱好者，我一直对量化交易充满好奇。看着那些复杂的数学模型和算法在金融市场中驰骋，总觉得自己离这个领域很遥远。直到今天，我完成了自己的第一个完整的量化交易策略——基于Backtrader框架的农业银行(601288)交易策略。 这篇文章记录了我从环境搭建到策略开发的全过程，包括遇到的坑、解决思路">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-11T18:14:00.000Z">
+<meta property="article:modified_time" content="2025-11-11T18:16:43.160Z">
+<meta property="article:author" content="郭文彪">
+<meta property="article:tag" content="量化交易">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://gggwb.github.io/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Monster" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/gggwb" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">浪浪山小郎君</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gggwb" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/">个人思考</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%8B%E6%9C%BA%E4%BC%98%E5%8C%96/">手机优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E8%BF%90%E7%BB%B4/">技术运维</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">服务部署</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">系统运维</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/IPv6/">IPv6</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPv6/" rel="tag">IPv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAS/" rel="tag">NAS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenVPN/" rel="tag">OpenVPN</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/" rel="tag">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vercel/" rel="tag">Vercel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" rel="tag">iOS巨魔商店</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ikuai/" rel="tag">ikuai</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipv6/" rel="tag">ipv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" rel="tag">博客美化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%92%8C%E6%95%B0%E5%AD%A6/" rel="tag">生活和数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BF%E8%81%94/" rel="tag">绿联</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/" rel="tag">网络优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" rel="tag">网络故障排查</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E6%99%96/" rel="tag">群晖</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%90%BD%E9%9C%9E%E5%AD%A4%E9%B9%9C/" rel="tag">落霞孤鹜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/" rel="tag">路由配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%83%A8%E7%BD%B2/" rel="tag">部署</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" rel="tag">量化交易</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DDNS/" style="font-size: 13px;">DDNS</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/IPv6/" style="font-size: 13px;">IPv6</a> <a href="/tags/NAS/" style="font-size: 13px;">NAS</a> <a href="/tags/Node-js/" style="font-size: 13px;">Node.js</a> <a href="/tags/OpenVPN/" style="font-size: 13.5px;">OpenVPN</a> <a href="/tags/SSL/" style="font-size: 13px;">SSL</a> <a href="/tags/Vercel/" style="font-size: 13px;">Vercel</a> <a href="/tags/iOS%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97/" style="font-size: 13.5px;">iOS巨魔商店</a> <a href="/tags/ikuai/" style="font-size: 13.5px;">ikuai</a> <a href="/tags/ipv6/" style="font-size: 13px;">ipv6</a> <a href="/tags/macOS/" style="font-size: 13px;">macOS</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 14px;">个人博客</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 13.5px;">内网穿透</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 13px;">动态规划</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" style="font-size: 13px;">博客美化</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 13.5px;">图床</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%92%8C%E6%95%B0%E5%AD%A6/" style="font-size: 13px;">生活和数学</a> <a href="/tags/%E7%BB%BF%E8%81%94/" style="font-size: 13px;">绿联</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13.5px;">网络</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/" style="font-size: 13px;">网络优化</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 13px;">网络故障排查</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 13.5px;">群晖</a> <a href="/tags/%E8%90%BD%E9%9C%9E%E5%AD%A4%E9%B9%9C/" style="font-size: 13px;">落霞孤鹜</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/" style="font-size: 13px;">路由配置</a> <a href="/tags/%E9%83%A8%E7%BD%B2/" style="font-size: 13px;">部署</a> <a href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" style="font-size: 13px;">量化交易</a> <a href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" style="font-size: 13px;">问题解决</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">十一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">四月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python/">Python</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Python/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/" class="title">从零到一：我的第一个量化交易策略开发实战</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-11-11T18:14:00.000Z" itemprop="datePublished">2025-11-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E8%BF%90%E7%BB%B4/">技术运维</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/10/25/vercel-nodejs-upgrade-solution/" class="title">解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-10-25T15:35:00.000Z" itemprop="datePublished">2025-10-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">系统运维</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/10/23/ipv6-%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="title">macOS IPv6路由问题排查与修复实战</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-10-23T12:38:00.000Z" itemprop="datePublished">2025-10-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/06/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E9%A2%98%E6%80%9D%E8%80%83/" class="title">动态规划解题思考</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-06-21T09:13:30.000Z" itemprop="datePublished">2025-06-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/">家庭网络</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/05/18/%E8%A7%A3%E5%86%B3VPN%E8%BF%9E%E6%8E%A5%E7%BE%A4%E6%99%96%E6%97%B6%E6%97%A0%E6%B3%95Ping%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98/" class="title">解决VPN连接群晖时无法Ping通的问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-05-18T15:42:52.000Z" itemprop="datePublished">2025-05-18</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-量化交易实战第一课" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从零到一：我的第一个量化交易策略开发实战
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/" class="article-date">
+	  <time datetime="2025-11-11T18:14:00.000Z" itemprop="datePublished">2025-11-12</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" rel="tag">量化交易</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>“代码不会说谎，但市场会教你谦逊。” —— 一个量化新手的感悟</p>
+</blockquote>
+<h2 id="🌟-前言：量化之路的起点"><a href="#🌟-前言：量化之路的起点" class="headerlink" title="🌟 前言：量化之路的起点"></a>🌟 前言：量化之路的起点</h2><p>作为一名编程爱好者，我一直对量化交易充满好奇。看着那些复杂的数学模型和算法在金融市场中驰骋，总觉得自己离这个领域很遥远。直到今天，我完成了自己的第一个完整的量化交易策略——基于Backtrader框架的农业银行(601288)交易策略。</p>
+<p>这篇文章记录了我从环境搭建到策略开发的全过程，包括遇到的坑、解决思路，以及完整的代码实现。希望能帮助更多想要入门量化的朋友少走弯路。</p>
+<h2 id="🛠️-环境搭建：选择正确的工具"><a href="#🛠️-环境搭建：选择正确的工具" class="headerlink" title="🛠️ 环境搭建：选择正确的工具"></a>🛠️ 环境搭建：选择正确的工具</h2><h3 id="为什么选择Backtrader？"><a href="#为什么选择Backtrader？" class="headerlink" title="为什么选择Backtrader？"></a>为什么选择Backtrader？</h3><p>在开始之前，我调研了几个量化框架：</p>
+<ul>
+<li><strong>Zipline</strong>：功能强大但文档较少，社区相对冷清</li>
+<li><strong>vn.py</strong>：国内优秀框架，但学习曲线较陡</li>
+<li><strong>Backtrader</strong>：文档完善、社区活跃、Python原生API友好</li>
+</ul>
+<p>最终选择了Backtrader，因为它对新手最友好，而且有大量中文教程。</p>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建项目目录</span></span><br><span class="line"><span class="built_in">mkdir</span> QuantGWB &amp;&amp; <span class="built_in">cd</span> QuantGWB/backtrader</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Python创建虚拟环境</span></span><br><span class="line">python -m venv .venv</span><br><span class="line"><span class="built_in">source</span> .venv/bin/activate  <span class="comment"># Mac/Linux</span></span><br><span class="line"><span class="comment"># .venv\Scripts\activate   # Windows</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖包</span></span><br><span class="line">pip install backtrader akshare pandas matplotlib yfinance</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建项目配置文件</span></span><br><span class="line"><span class="built_in">cat</span> &gt; pyproject.toml &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">[project]</span></span><br><span class="line"><span class="string">name = &quot;agricultural-bank-quant-strategy&quot;</span></span><br><span class="line"><span class="string">version = &quot;1.0.0&quot;</span></span><br><span class="line"><span class="string">dependencies = [</span></span><br><span class="line"><span class="string">    &quot;backtrader&gt;=1.9.78&quot;,</span></span><br><span class="line"><span class="string">    &quot;akshare&gt;=1.11.0&quot;,</span></span><br><span class="line"><span class="string">    &quot;pandas&gt;=2.0.0&quot;,</span></span><br><span class="line"><span class="string">    &quot;matplotlib&gt;=3.7.0&quot;,</span></span><br><span class="line"><span class="string">    &quot;yfinance&gt;=0.2.0&quot;</span></span><br><span class="line"><span class="string">]</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="📊-策略思路：技术分析的回归"><a href="#📊-策略思路：技术分析的回归" class="headerlink" title="📊 策略思路：技术分析的回归"></a>📊 策略思路：技术分析的回归</h2><h3 id="策略原理"><a href="#策略原理" class="headerlink" title="策略原理"></a>策略原理</h3><p>我选择了一个相对简单的技术分析策略，基于以下几个核心思想：</p>
+<ol>
+<li><strong>趋势判断</strong>：使用移动平均线判断市场趋势</li>
+<li><strong>买入信号</strong>：短期趋势向上 + 突破长期趋势</li>
+<li><strong>风险控制</strong>：多层次止盈止损机制</li>
+</ol>
+<h3 id="技术指标选择"><a href="#技术指标选择" class="headerlink" title="技术指标选择"></a>技术指标选择</h3><ul>
+<li><strong>MA3, MA5, MA10, MA60</strong>：多周期移动平均线</li>
+<li><strong>MA5 &gt; MA10</strong>：短期趋势向上</li>
+<li><strong>MA3上穿MA60</strong>：短期突破长期</li>
+</ul>
+<h2 id="🔧-策略开发：从V1到V3的演进"><a href="#🔧-策略开发：从V1到V3的演进" class="headerlink" title="🔧 策略开发：从V1到V3的演进"></a>🔧 策略开发：从V1到V3的演进</h2><h3 id="V1版本：基础框架"><a href="#V1版本：基础框架" class="headerlink" title="V1版本：基础框架"></a>V1版本：基础框架</h3><p>第一个版本很简单，只有基本的买卖逻辑：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ShanxiFenjiuStrategy</span>(bt.Strategy):</span><br><span class="line">    params = ((<span class="string">&#x27;ma5_period&#x27;</span>, <span class="number">5</span>), (<span class="string">&#x27;ma10_period&#x27;</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.ma5 = bt.indicators.SMA(self.data.close, period=self.params.ma5_period)</span><br><span class="line">        self.ma10 = bt.indicators.SMA(self.data.close, period=self.params.ma10_period)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.position <span class="keyword">and</span> self.ma5[<span class="number">0</span>] &gt; self.ma10[<span class="number">0</span>]:</span><br><span class="line">            self.buy()</span><br><span class="line">        <span class="keyword">elif</span> self.position <span class="keyword">and</span> self.ma5[<span class="number">0</span>] &lt; self.ma10[<span class="number">0</span>]:</span><br><span class="line">            self.sell()</span><br></pre></td></tr></table></figure>
+
+<h3 id="V2版本：参数化改进"><a href="#V2版本：参数化改进" class="headerlink" title="V2版本：参数化改进"></a>V2版本：参数化改进</h3><p>很快发现硬编码参数不方便调优，于是实现了参数化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">params = (</span><br><span class="line">    (<span class="string">&#x27;ma5_period&#x27;</span>, <span class="number">5</span>),</span><br><span class="line">    (<span class="string">&#x27;ma10_period&#x27;</span>, <span class="number">10</span>),</span><br><span class="line">    (<span class="string">&#x27;first_profit_target&#x27;</span>, <span class="number">0.10</span>),</span><br><span class="line">    (<span class="string">&#x27;protection_profit_target&#x27;</span>, <span class="number">0.08</span>),</span><br><span class="line">    (<span class="string">&#x27;mobile_profit_start&#x27;</span>, <span class="number">0.15</span>),</span><br><span class="line">    (<span class="string">&#x27;mobile_retracement&#x27;</span>, <span class="number">0.05</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="V3版本：逻辑完善"><a href="#V3版本：逻辑完善" class="headerlink" title="V3版本：逻辑完善"></a>V3版本：逻辑完善</h3><p>最重要的改进是修复了止盈止损的逻辑问题：</p>
+<h2 id="🎯-V3完整策略代码"><a href="#🎯-V3完整策略代码" class="headerlink" title="🎯 V3完整策略代码"></a>🎯 V3完整策略代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">农业银行量化交易策略 V3版本</span></span><br><span class="line"><span class="string">作者：GWB</span></span><br><span class="line"><span class="string">创建时间：2024-11-11</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> backtrader <span class="keyword">as</span> bt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AgriculturalBankStrategyV3</span>(bt.Strategy):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    农业银行量化交易策略 V3版本</span></span><br><span class="line"><span class="string">    核心特性：完整的止盈止损体系 + 移动止盈机制</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    params = (</span><br><span class="line">        <span class="comment"># 均线参数</span></span><br><span class="line">        (<span class="string">&#x27;ma3_period&#x27;</span>, <span class="number">2</span>),</span><br><span class="line">        (<span class="string">&#x27;ma5_period&#x27;</span>, <span class="number">5</span>),</span><br><span class="line">        (<span class="string">&#x27;ma10_period&#x27;</span>, <span class="number">10</span>),</span><br><span class="line">        (<span class="string">&#x27;ma60_period&#x27;</span>, <span class="number">60</span>),</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 止盈止损参数</span></span><br><span class="line">        (<span class="string">&#x27;first_profit_target&#x27;</span>, <span class="number">0.10</span>),    <span class="comment"># 第一层止盈10%</span></span><br><span class="line">        (<span class="string">&#x27;protection_profit_target&#x27;</span>, <span class="number">0.08</span>),  <span class="comment"># 保护线8%</span></span><br><span class="line">        (<span class="string">&#x27;mobile_profit_start&#x27;</span>, <span class="number">0.15</span>),      <span class="comment"># 移动止盈启动15%</span></span><br><span class="line">        (<span class="string">&#x27;mobile_retracement&#x27;</span>, <span class="number">0.05</span>),       <span class="comment"># 移动止盈回撤5%</span></span><br><span class="line">        (<span class="string">&#x27;stop_loss_pct&#x27;</span>, -<span class="number">0.02</span>),            <span class="comment"># 硬止损-2%</span></span><br><span class="line"></span><br><span class="line">        (<span class="string">&#x27;printlog&#x27;</span>, <span class="literal">True</span>),</span><br><span class="line">        (<span class="string">&#x27;initial_size&#x27;</span>, <span class="number">0.95</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 计算技术指标</span></span><br><span class="line">        self.ma3 = bt.indicators.SMA(self.data.close, period=self.params.ma3_period)</span><br><span class="line">        self.ma5 = bt.indicators.SMA(self.data.close, period=self.params.ma5_period)</span><br><span class="line">        self.ma10 = bt.indicators.SMA(self.data.close, period=self.params.ma10_period)</span><br><span class="line">        self.ma60 = bt.indicators.SMA(self.data.close, period=self.params.ma60_period)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 仓位信息跟踪</span></span><br><span class="line">        self.position_info = &#123;</span><br><span class="line">            <span class="string">&#x27;entry_price&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">&#x27;half_sold&#x27;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&#x27;highest_price&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">&#x27;mobile_stop_price&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">&#x27;mobile_stop_active&#x27;</span>: <span class="literal">False</span>,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 交易统计</span></span><br><span class="line">        self.trades = <span class="number">0</span></span><br><span class="line">        self.wins = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">log</span>(<span class="params">self, txt, dt=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="keyword">if</span> self.params.printlog:</span><br><span class="line">            dt = dt <span class="keyword">or</span> self.datas[<span class="number">0</span>].datetime.date(<span class="number">0</span>)</span><br><span class="line">            price = <span class="built_in">float</span>(self.data.close[<span class="number">0</span>])</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;dt.isoformat()&#125;</span> 价格:<span class="subst">&#123;price:<span class="number">.2</span>f&#125;</span> <span class="subst">&#123;txt&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">notify_order</span>(<span class="params">self, order</span>):</span><br><span class="line">        <span class="keyword">if</span> order.status <span class="keyword">in</span> [order.Submitted, order.Accepted]:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> order.status <span class="keyword">in</span> [order.Completed]:</span><br><span class="line">            <span class="keyword">if</span> order.isbuy():</span><br><span class="line">                self.position_info[<span class="string">&#x27;entry_price&#x27;</span>] = order.executed.price</span><br><span class="line">                self.position_info[<span class="string">&#x27;half_sold&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">                self.position_info[<span class="string">&#x27;highest_price&#x27;</span>] = order.executed.price</span><br><span class="line">                self.position_info[<span class="string">&#x27;mobile_stop_active&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">                self.trades += <span class="number">1</span></span><br><span class="line">                profit_pct = (self.data.close[<span class="number">0</span>] - order.executed.price) / order.executed.price</span><br><span class="line">                self.log(<span class="string">f&#x27;🚀 买入 - 价格:<span class="subst">&#123;order.executed.price:<span class="number">.2</span>f&#125;</span> 数量:<span class="subst">&#123;order.executed.size&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> order.issell():</span><br><span class="line">                <span class="keyword">if</span> self.position_info[<span class="string">&#x27;entry_price&#x27;</span>] &gt; <span class="number">0</span>:</span><br><span class="line">                    profit_pct = (order.executed.price - self.position_info[<span class="string">&#x27;entry_price&#x27;</span>]) / self.position_info[<span class="string">&#x27;entry_price&#x27;</span>]</span><br><span class="line">                    <span class="keyword">if</span> profit_pct &gt; <span class="number">0</span>:</span><br><span class="line">                        self.wins += <span class="number">1</span></span><br><span class="line">                    self.log(<span class="string">f&#x27;💰 卖出 - 价格:<span class="subst">&#123;order.executed.price:<span class="number">.2</span>f&#125;</span> 数量:<span class="subst">&#123;order.executed.size&#125;</span> 总盈亏:<span class="subst">&#123;profit_pct:+<span class="number">.2</span>%&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self.position:</span><br><span class="line">                    self.position_info = &#123;</span><br><span class="line">                        <span class="string">&#x27;entry_price&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;half_sold&#x27;</span>: <span class="literal">False</span>,</span><br><span class="line">                        <span class="string">&#x27;highest_price&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;mobile_stop_price&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">                        <span class="string">&#x27;mobile_stop_active&#x27;</span>: <span class="literal">False</span>,</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_buy_signal</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(self) &lt; self.params.ma60_period:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        ma5 = <span class="built_in">float</span>(self.ma5[<span class="number">0</span>])</span><br><span class="line">        ma10 = <span class="built_in">float</span>(self.ma10[<span class="number">0</span>])</span><br><span class="line">        ma3_current = <span class="built_in">float</span>(self.ma3[<span class="number">0</span>])</span><br><span class="line">        ma3_prev = <span class="built_in">float</span>(self.ma3[-<span class="number">2</span>]) <span class="keyword">if</span> <span class="built_in">len</span>(self) &gt; <span class="number">1</span> <span class="keyword">else</span> ma3_current</span><br><span class="line">        ma60_current = <span class="built_in">float</span>(self.ma60[<span class="number">0</span>])</span><br><span class="line">        ma60_prev = <span class="built_in">float</span>(self.ma60[-<span class="number">2</span>]) <span class="keyword">if</span> <span class="built_in">len</span>(self) &gt; <span class="number">1</span> <span class="keyword">else</span> ma60_current</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 买入条件：短期趋势向上 + 突破长期趋势</span></span><br><span class="line">        condition1 = ma5 &gt; ma10</span><br><span class="line">        condition2 = (ma3_prev &lt; ma60_prev) <span class="keyword">and</span> (ma3_current &gt; ma60_current)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> condition1 <span class="keyword">and</span> condition2</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_sell_signal</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(self) &lt; self.params.ma10_period:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        ma5 = <span class="built_in">float</span>(self.ma5[<span class="number">0</span>])</span><br><span class="line">        ma10 = <span class="built_in">float</span>(self.ma10[<span class="number">0</span>])</span><br><span class="line">        ma_diff_pct = (ma5 - ma10) / ma10</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ma_diff_pct &lt; -<span class="number">0.02</span>  <span class="comment"># MA5-MA10差值小于-2%</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_mobile_stop_loss</span>(<span class="params">self, current_price, profit_pct</span>):</span><br><span class="line">        <span class="comment"># 移动止盈逻辑</span></span><br><span class="line">        <span class="keyword">if</span> profit_pct &gt;= self.params.mobile_profit_start:</span><br><span class="line">            <span class="keyword">if</span> current_price &gt; self.position_info[<span class="string">&#x27;highest_price&#x27;</span>]:</span><br><span class="line">                self.position_info[<span class="string">&#x27;highest_price&#x27;</span>] = current_price</span><br><span class="line"></span><br><span class="line">            mobile_stop_price = self.position_info[<span class="string">&#x27;highest_price&#x27;</span>] * (<span class="number">1</span> - self.params.mobile_retracement)</span><br><span class="line">            self.position_info[<span class="string">&#x27;mobile_stop_price&#x27;</span>] = mobile_stop_price</span><br><span class="line">            self.position_info[<span class="string">&#x27;mobile_stop_active&#x27;</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">            self.log(<span class="string">f&#x27;📊 移动止盈监控中: 最高价<span class="subst">&#123;self.position_info[<span class="string">&quot;highest_price&quot;</span>]:<span class="number">.2</span>f&#125;</span> 止盈线<span class="subst">&#123;mobile_stop_price:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (self.position_info[<span class="string">&#x27;mobile_stop_active&#x27;</span>] <span class="keyword">and</span></span><br><span class="line">            current_price &lt; self.position_info[<span class="string">&#x27;mobile_stop_price&#x27;</span>]):</span><br><span class="line">            retracement_amt = (self.position_info[<span class="string">&#x27;highest_price&#x27;</span>] - current_price) / self.position_info[<span class="string">&#x27;highest_price&#x27;</span>]</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;mobile_stop&#x27;</span>, &#123;</span><br><span class="line">                <span class="string">&#x27;reason&#x27;</span>: <span class="string">f&#x27;移动止盈触发：从最高价回撤<span class="subst">&#123;retracement_amt:<span class="number">.1</span>%&#125;</span>超过<span class="subst">&#123;self.params.mobile_retracement:<span class="number">.0</span>%&#125;</span>&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;profit_pct&#x27;</span>: profit_pct</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_all_exit_conditions</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.position <span class="keyword">or</span> self.position_info[<span class="string">&#x27;entry_price&#x27;</span>] == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span>, &#123;&#125;</span><br><span class="line"></span><br><span class="line">        current_price = <span class="built_in">float</span>(self.data.close[<span class="number">0</span>])</span><br><span class="line">        entry_price = self.position_info[<span class="string">&#x27;entry_price&#x27;</span>]</span><br><span class="line">        profit_pct = (current_price - entry_price) / entry_price</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 硬止损（最高优先级）</span></span><br><span class="line">        <span class="keyword">if</span> profit_pct &lt;= self.params.stop_loss_pct:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;stop_loss&#x27;</span>, &#123;</span><br><span class="line">                <span class="string">&#x27;reason&#x27;</span>: <span class="string">f&#x27;🛑 硬止损：亏损<span class="subst">&#123;<span class="built_in">abs</span>(profit_pct):<span class="number">.1</span>%&#125;</span>超过<span class="subst">&#123;<span class="built_in">abs</span>(self.params.stop_loss_pct):<span class="number">.0</span>%&#125;</span>&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;profit_pct&#x27;</span>: profit_pct</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. 第一层止盈</span></span><br><span class="line">        <span class="keyword">if</span> profit_pct &gt;= self.params.first_profit_target <span class="keyword">and</span> <span class="keyword">not</span> self.position_info[<span class="string">&#x27;half_sold&#x27;</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;take_profit_half&#x27;</span>, &#123;</span><br><span class="line">                <span class="string">&#x27;reason&#x27;</span>: <span class="string">f&#x27;💰 第一层止盈：上涨<span class="subst">&#123;profit_pct:<span class="number">.1</span>%&#125;</span>达到<span class="subst">&#123;self.params.first_profit_target:<span class="number">.0</span>%&#125;</span>&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;profit_pct&#x27;</span>: profit_pct</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. 如果已卖出一半，检查后续止盈条件</span></span><br><span class="line">        <span class="keyword">if</span> self.position_info[<span class="string">&#x27;half_sold&#x27;</span>]:</span><br><span class="line">            <span class="comment"># 3a. 保护止盈</span></span><br><span class="line">            <span class="keyword">if</span> profit_pct &lt; self.params.protection_profit_target:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;protection_stop&#x27;</span>, &#123;</span><br><span class="line">                    <span class="string">&#x27;reason&#x27;</span>: <span class="string">f&#x27;🛡️ 保护止盈：涨幅回撤至<span class="subst">&#123;profit_pct:<span class="number">.1</span>%&#125;</span>低于<span class="subst">&#123;self.params.protection_profit_target:<span class="number">.0</span>%&#125;</span>&#x27;</span>,</span><br><span class="line">                    <span class="string">&#x27;profit_pct&#x27;</span>: profit_pct</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 3b. 移动止盈</span></span><br><span class="line">            mobile_result = self.process_mobile_stop_loss(current_price, profit_pct)</span><br><span class="line">            <span class="keyword">if</span> mobile_result:</span><br><span class="line">                <span class="keyword">return</span> mobile_result</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. 技术卖出信号</span></span><br><span class="line">        <span class="keyword">if</span> self.check_sell_signal():</span><br><span class="line">            ma5_val = <span class="built_in">float</span>(self.ma5[<span class="number">0</span>])</span><br><span class="line">            ma10_val = <span class="built_in">float</span>(self.ma10[<span class="number">0</span>])</span><br><span class="line">            ma_diff_pct = (ma5_val - ma10_val) / ma10_val * <span class="number">100</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;technical_sell&#x27;</span>, &#123;</span><br><span class="line">                <span class="string">&#x27;reason&#x27;</span>: <span class="string">f&#x27;📉 技术卖出：MA5(<span class="subst">&#123;ma5_val:<span class="number">.2</span>f&#125;</span>)与MA10(<span class="subst">&#123;ma10_val:<span class="number">.2</span>f&#125;</span>)差值<span class="subst">&#123;ma_diff_pct:<span class="number">.1</span>f&#125;</span>% &lt; -2%&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;profit_pct&#x27;</span>: profit_pct</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">        current_price = <span class="built_in">float</span>(self.data.close[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检查退出条件</span></span><br><span class="line">        <span class="keyword">if</span> self.position:</span><br><span class="line">            exit_condition, exit_info = self.check_all_exit_conditions()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> exit_condition:</span><br><span class="line">                <span class="keyword">if</span> exit_condition == <span class="string">&#x27;stop_loss&#x27;</span>:</span><br><span class="line">                    self.close()</span><br><span class="line">                    self.log(exit_info[<span class="string">&#x27;reason&#x27;</span>])</span><br><span class="line">                <span class="keyword">elif</span> exit_condition == <span class="string">&#x27;take_profit_half&#x27;</span>:</span><br><span class="line">                    sell_size = <span class="built_in">int</span>(self.position.size / <span class="number">2</span>)</span><br><span class="line">                    <span class="keyword">if</span> sell_size &gt; <span class="number">0</span>:</span><br><span class="line">                        self.sell(size=sell_size)</span><br><span class="line">                        self.position_info[<span class="string">&#x27;half_sold&#x27;</span>] = <span class="literal">True</span></span><br><span class="line">                        self.log(exit_info[<span class="string">&#x27;reason&#x27;</span>])</span><br><span class="line">                <span class="keyword">elif</span> exit_condition == <span class="string">&#x27;protection_stop&#x27;</span>:</span><br><span class="line">                    self.close()</span><br><span class="line">                    self.log(exit_info[<span class="string">&#x27;reason&#x27;</span>])</span><br><span class="line">                <span class="keyword">elif</span> exit_condition == <span class="string">&#x27;mobile_stop&#x27;</span>:</span><br><span class="line">                    self.close()</span><br><span class="line">                    self.log(exit_info[<span class="string">&#x27;reason&#x27;</span>])</span><br><span class="line">                <span class="keyword">elif</span> exit_condition == <span class="string">&#x27;technical_sell&#x27;</span>:</span><br><span class="line">                    self.close()</span><br><span class="line">                    self.log(exit_info[<span class="string">&#x27;reason&#x27;</span>])</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检查买入信号</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.position <span class="keyword">and</span> self.check_buy_signal():</span><br><span class="line">            cash = self.broker.cash</span><br><span class="line">            size = <span class="built_in">int</span>(cash * self.params.initial_size / current_price)</span><br><span class="line">            <span class="keyword">if</span> size &gt; <span class="number">0</span>:</span><br><span class="line">                self.buy(size=size)</span><br><span class="line">                self.log(<span class="string">f&#x27;🚀 买入信号：MA5&gt;MA10且MA3上穿MA60，数量:<span class="subst">&#123;size&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_data_from_akshare</span>(<span class="params">ticker=<span class="string">&#x27;601288&#x27;</span>, start_date=<span class="string">&#x27;2022-01-01&#x27;</span>, end_date=<span class="string">&#x27;2025-11-10&#x27;</span></span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">import</span> akshare <span class="keyword">as</span> ak</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;从AKShare获取 <span class="subst">&#123;ticker&#125;</span> 数据...&quot;</span>)</span><br><span class="line"></span><br><span class="line">        start_date_fmt = start_date.replace(<span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        end_date_fmt = end_date.replace(<span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        data = ak.stock_zh_a_hist(symbol=ticker, period=<span class="string">&quot;daily&quot;</span>,</span><br><span class="line">                                   start_date=start_date_fmt, end_date=end_date_fmt)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data.empty:</span><br><span class="line">            bt_data = data[[<span class="string">&#x27;日期&#x27;</span>, <span class="string">&#x27;开盘&#x27;</span>, <span class="string">&#x27;最高&#x27;</span>, <span class="string">&#x27;最低&#x27;</span>, <span class="string">&#x27;收盘&#x27;</span>, <span class="string">&#x27;成交量&#x27;</span>]].copy()</span><br><span class="line">            bt_data.columns = [<span class="string">&#x27;date&#x27;</span>, <span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;low&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, <span class="string">&#x27;volume&#x27;</span>]</span><br><span class="line">            bt_data[<span class="string">&#x27;date&#x27;</span>] = pd.to_datetime(bt_data[<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line">            bt_data.set_index(<span class="string">&#x27;date&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;✅ 成功获取AKShare数据: <span class="subst">&#123;<span class="built_in">len</span>(bt_data)&#125;</span> 条记录&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;📅 数据范围: <span class="subst">&#123;bt_data.index[<span class="number">0</span>].date()&#125;</span> 到 <span class="subst">&#123;bt_data.index[-<span class="number">1</span>].date()&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;💰 价格范围: ¥<span class="subst">&#123;bt_data[<span class="string">&#x27;close&#x27;</span>].<span class="built_in">min</span>():<span class="number">.2</span>f&#125;</span> - ¥<span class="subst">&#123;bt_data[<span class="string">&#x27;close&#x27;</span>].<span class="built_in">max</span>():<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> bt_data</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;❌ AKShare获取失败: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_backtest</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=&quot;</span> * <span class="number">80</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;农业银行量化交易策略回测（V3版本）&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=&quot;</span> * <span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取数据</span></span><br><span class="line">    data = get_data_from_akshare(<span class="string">&#x27;601288&#x27;</span>, <span class="string">&#x27;2022-01-01&#x27;</span>, <span class="string">&#x27;2025-11-10&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> data <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;❌ 数据获取失败&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建回测引擎</span></span><br><span class="line">    cerebro = bt.Cerebro()</span><br><span class="line">    cerebro.addstrategy(AgriculturalBankStrategyV3)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 添加数据</span></span><br><span class="line">    bt_data = bt.feeds.PandasData(dataname=data)</span><br><span class="line">    cerebro.adddata(bt_data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置初始资金和手续费</span></span><br><span class="line">    cerebro.broker.setcash(<span class="number">100000</span>)</span><br><span class="line">    cerebro.broker.setcommission(commission=<span class="number">0.0003</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 添加分析器</span></span><br><span class="line">    cerebro.addanalyzer(bt.analyzers.DrawDown, _name=<span class="string">&#x27;drawdown&#x27;</span>)</span><br><span class="line">    cerebro.addanalyzer(bt.analyzers.Returns, _name=<span class="string">&#x27;returns&#x27;</span>)</span><br><span class="line">    cerebro.addanalyzer(bt.analyzers.TradeAnalyzer, _name=<span class="string">&#x27;trades&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 运行回测</span></span><br><span class="line">    start_value = cerebro.broker.getvalue()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;开始回测，初始资金: ¥<span class="subst">&#123;start_value:,<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-&quot;</span> * <span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">    results = cerebro.run()</span><br><span class="line">    strategy = results[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算结果</span></span><br><span class="line">    final_value = cerebro.broker.getvalue()</span><br><span class="line">    total_return = (final_value - start_value) / start_value * <span class="number">100</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-&quot;</span> * <span class="number">80</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;📈 回测结果:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;初始资金: ¥<span class="subst">&#123;start_value:,<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;最终资金: ¥<span class="subst">&#123;final_value:,<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;收益率: <span class="subst">&#123;total_return:+<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;交易次数: <span class="subst">&#123;strategy.trades&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;盈利次数: <span class="subst">&#123;strategy.wins&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> strategy.trades &gt; <span class="number">0</span>:</span><br><span class="line">        win_rate = strategy.wins / strategy.trades * <span class="number">100</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;胜率: <span class="subst">&#123;win_rate:<span class="number">.1</span>f&#125;</span>%&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        dd = strategy.analyzers.drawdown.get_analysis()</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;max&#x27;</span> <span class="keyword">in</span> dd:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;最大回撤: <span class="subst">&#123;dd[<span class="string">&#x27;max&#x27;</span>][<span class="string">&#x27;drawdown&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=&quot;</span> * <span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成图表</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cerebro.plot(style=<span class="string">&#x27;candlestick&#x27;</span>, barup=<span class="string">&#x27;red&#x27;</span>, bardown=<span class="string">&#x27;green&#x27;</span>,</span><br><span class="line">                   title=<span class="string">&#x27;农业银行V3策略回测结果&#x27;</span>, figsize=(<span class="number">15</span>, <span class="number">8</span>))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;⚠️ 图表生成失败: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    run_backtest()</span><br></pre></td></tr></table></figure>
+
+<h2 id="🏃-运行策略"><a href="#🏃-运行策略" class="headerlink" title="🏃 运行策略"></a>🏃 运行策略</h2><h3 id="完整运行命令"><a href="#完整运行命令" class="headerlink" title="完整运行命令"></a>完整运行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入项目目录</span></span><br><span class="line"><span class="built_in">cd</span> /Users/gggwb/Documents/QuantGWB/backtrader</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活虚拟环境</span></span><br><span class="line"><span class="built_in">source</span> .venv/bin/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行V3策略（农业银行 601288）</span></span><br><span class="line">.venv/bin/python examples/shanxi_fenjiu_real_data_V3.py \</span><br><span class="line">  --first-profit 0.1 \</span><br><span class="line">  --protection-profit 0.08 \</span><br><span class="line">  --mobile-start 0.15 \</span><br><span class="line">  --mobile-retracement 0.05 \</span><br><span class="line">  --ma3 2 \</span><br><span class="line">  --ma5 5 \</span><br><span class="line">  --ma10 10 \</span><br><span class="line">  --ma60 60 \</span><br><span class="line">  --data-source akshare \</span><br><span class="line">  --start 2022-01-01 \</span><br><span class="line">  --end 2025-11-10 \</span><br><span class="line">  --ticker 601288</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--ma3</code></td>
+<td>3日均线周期</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>--ma5</code></td>
+<td>5日均线周期</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>--ma10</code></td>
+<td>10日均线周期</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>--ma60</code></td>
+<td>60日均线周期</td>
+<td>60</td>
+</tr>
+<tr>
+<td><code>--first-profit</code></td>
+<td>第一层止盈比例</td>
+<td>0.10 (10%)</td>
+</tr>
+<tr>
+<td><code>--protection-profit</code></td>
+<td>保护止盈线</td>
+<td>0.08 (8%)</td>
+</tr>
+<tr>
+<td><code>--mobile-start</code></td>
+<td>移动止盈启动点</td>
+<td>0.15 (15%)</td>
+</tr>
+<tr>
+<td><code>--mobile-retracement</code></td>
+<td>移动止盈回撤比例</td>
+<td>0.05 (5%)</td>
+</tr>
+<tr>
+<td><code>--ticker</code></td>
+<td>股票代码</td>
+<td>600809</td>
+</tr>
+</tbody></table>
+<h2 id="💡-遇到的坑与解决思路"><a href="#💡-遇到的坑与解决思路" class="headerlink" title="💡 遇到的坑与解决思路"></a>💡 遇到的坑与解决思路</h2><h3 id="1-数据获取问题"><a href="#1-数据获取问题" class="headerlink" title="1. 数据获取问题"></a>1. 数据获取问题</h3><p><strong>问题</strong>：Yahoo Finance API被限制<br><strong>解决</strong>：改用AKShare，免费且稳定</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最初的Yahoo Finance方案</span></span><br><span class="line"><span class="keyword">import</span> yfinance <span class="keyword">as</span> yf</span><br><span class="line">data = yf.download(<span class="string">&#x27;600809.SS&#x27;</span>, start=start_date, end=end_date)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改为AKShare方案</span></span><br><span class="line"><span class="keyword">import</span> akshare <span class="keyword">as</span> ak</span><br><span class="line">data = ak.stock_zh_a_hist(symbol=ticker, period=<span class="string">&quot;daily&quot;</span>, ...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-移动止盈逻辑错误"><a href="#2-移动止盈逻辑错误" class="headerlink" title="2. 移动止盈逻辑错误"></a>2. 移动止盈逻辑错误</h3><p><strong>问题</strong>：移动止盈只有在创新高时才检查触发条件<br><strong>症状</strong>：价格跌破移动止盈线时没有触发止损</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误逻辑</span></span><br><span class="line"><span class="keyword">if</span> current_price &gt; highest_price:  <span class="comment"># ❌ 只有创新高才进入</span></span><br><span class="line">    update_stop_loss()</span><br><span class="line">    <span class="keyword">if</span> current_price &lt; stop_price:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span>  <span class="comment"># ❌ 永远执行不到</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 正确逻辑</span></span><br><span class="line"><span class="keyword">if</span> mobile_stop_active <span class="keyword">and</span> current_price &lt; stop_price:  <span class="comment"># ✅ 优先检查触发</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> current_price &gt; highest_price:  <span class="comment"># ✅ 再更新</span></span><br><span class="line">    update_stop_loss()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-止盈止损优先级混乱"><a href="#3-止盈止损优先级混乱" class="headerlink" title="3. 止盈止损优先级混乱"></a>3. 止盈止损优先级混乱</h3><p><strong>问题</strong>：技术卖出信号优先级高于移动止盈<br><strong>症状</strong>：应该触发移动止盈时却触发了技术卖出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修正前的优先级（错误）</span></span><br><span class="line"><span class="number">1.</span> 硬止损</span><br><span class="line"><span class="number">2.</span> 技术卖出  <span class="comment"># ❌ 优先级过高</span></span><br><span class="line"><span class="number">3.</span> 移动止盈  <span class="comment"># ❌ 优先级过低</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修正后的优先级（正确）</span></span><br><span class="line"><span class="number">1.</span> 硬止损</span><br><span class="line"><span class="number">2.</span> 第一层止盈</span><br><span class="line"><span class="number">3.</span> 移动止盈  <span class="comment"># ✅ 保护已有收益</span></span><br><span class="line"><span class="number">4.</span> 保护止盈</span><br><span class="line"><span class="number">5.</span> 技术卖出  <span class="comment"># ✅ 优先级最低</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-买卖信号优化"><a href="#4-买卖信号优化" class="headerlink" title="4. 买卖信号优化"></a>4. 买卖信号优化</h3><p><strong>问题</strong>：MA5&#x3D;MA10的卖出信号过于敏感<br><strong>症状</strong>：频繁交易，手续费影响收益<br><strong>解决</strong>：改为MA5-MA10差值小于-2%才卖出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 优化前</span></span><br><span class="line"><span class="keyword">if</span> self.ma5[<span class="number">0</span>] &lt; self.ma10[<span class="number">0</span>]:</span><br><span class="line">    self.sell()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 优化后</span></span><br><span class="line">ma_diff_pct = (ma5 - ma10) / ma10</span><br><span class="line"><span class="keyword">if</span> ma_diff_pct &lt; -<span class="number">0.02</span>:  <span class="comment"># 差值小于-2%</span></span><br><span class="line">    self.sell()</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-策略逻辑详解"><a href="#🎯-策略逻辑详解" class="headerlink" title="🎯 策略逻辑详解"></a>🎯 策略逻辑详解</h2><h3 id="止盈止损体系设计"><a href="#止盈止损体系设计" class="headerlink" title="止盈止损体系设计"></a>止盈止损体系设计</h3><p>我的策略设计了四层风险控制机制：</p>
+<ol>
+<li><strong>硬止损</strong>：亏损超过2%立即止损，保护本金</li>
+<li><strong>第一层止盈</strong>：上涨10%卖出一半，锁定部分收益</li>
+<li><strong>保护止盈</strong>：剩余仓位如果涨幅跌破8%全部卖出</li>
+<li><strong>移动止盈</strong>：涨幅超过15%后启动，回撤5%触发卖出</li>
+</ol>
+<h3 id="每日检查逻辑"><a href="#每日检查逻辑" class="headerlink" title="每日检查逻辑"></a>每日检查逻辑</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="comment"># 每日按优先级检查：</span></span><br><span class="line">    <span class="comment"># 1. 硬止损（亏损2%）</span></span><br><span class="line">    <span class="comment"># 2. 第一层止盈（上涨10%卖出一半）</span></span><br><span class="line">    <span class="comment"># 3. 如果已卖出一半：</span></span><br><span class="line">    <span class="comment">#    3a. 保护止盈（涨幅低于8%清仓）</span></span><br><span class="line">    <span class="comment">#    3b. 移动止盈（涨幅≥15%时启动，回撤5%触发）</span></span><br><span class="line">    <span class="comment"># 4. 技术卖出信号（MA5-MA10差值&lt;-2%）</span></span><br><span class="line">    <span class="comment"># 5. 买入信号检查</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="买入信号设计"><a href="#买入信号设计" class="headerlink" title="买入信号设计"></a>买入信号设计</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">买入条件 = (MA5 &gt; MA10) AND (MA3上穿MA60)</span><br></pre></td></tr></table></figure>
+
+<p>这个组合的含义：</p>
+<ul>
+<li><strong>MA5 &gt; MA10</strong>：确保短期趋势向上</li>
+<li><strong>MA3上穿MA60</strong>：捕捉短期突破长期趋势的机会</li>
+</ul>
+<h2 id="📊-性能评估"><a href="#📊-性能评估" class="headerlink" title="📊 性能评估"></a>📊 性能评估</h2><h3 id="关键指标"><a href="#关键指标" class="headerlink" title="关键指标"></a>关键指标</h3><ul>
+<li><strong>胜率</strong>：盈利交易占总交易的比例</li>
+<li><strong>盈亏比</strong>：平均盈利与平均亏损的比值</li>
+<li><strong>最大回撤</strong>：策略面临的最大损失</li>
+<li><strong>夏普比率</strong>：风险调整后的收益</li>
+</ul>
+<h3 id="回测结果分析"><a href="#回测结果分析" class="headerlink" title="回测结果分析"></a>回测结果分析</h3><p>运行完成后，策略会输出详细的回测报告，包括：</p>
+<ul>
+<li>总收益率</li>
+<li>交易次数和胜率</li>
+<li>最大回撤</li>
+<li>交易明细</li>
+</ul>
+<h2 id="🚀-改进方向"><a href="#🚀-改进方向" class="headerlink" title="🚀 改进方向"></a>🚀 改进方向</h2><h3 id="短期优化"><a href="#短期优化" class="headerlink" title="短期优化"></a>短期优化</h3><ol>
+<li><strong>参数调优</strong>：使用网格搜索找到最优参数组合</li>
+<li><strong>多因子模型</strong>：加入成交量、波动率等因子</li>
+<li><strong>资金管理</strong>：动态调整仓位大小</li>
+</ol>
+<h3 id="长期规划"><a href="#长期规划" class="headerlink" title="长期规划"></a>长期规划</h3><ol>
+<li><strong>机器学习</strong>：使用ML模型预测价格走势</li>
+<li><strong>组合策略</strong>：多品种多策略分散风险</li>
+<li><strong>实盘交易</strong>：连接券商API进行实盘交易</li>
+</ol>
+<h3 id="具体优化建议"><a href="#具体优化建议" class="headerlink" title="具体优化建议"></a>具体优化建议</h3><ol>
+<li><p><strong>参数网格搜索</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试不同参数组合</span></span><br><span class="line">ma5_options = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br><span class="line">ma10_options = [<span class="number">8</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>]</span><br><span class="line">profit_targets = [<span class="number">0.08</span>, <span class="number">0.10</span>, <span class="number">0.12</span>, <span class="number">0.15</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ma5 <span class="keyword">in</span> ma5_options:</span><br><span class="line">    <span class="keyword">for</span> ma10 <span class="keyword">in</span> ma10_options:</span><br><span class="line">        <span class="comment"># 运行回测并记录结果</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多品种验证</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试其他银行股</span></span><br><span class="line">stocks = [<span class="string">&#x27;601288&#x27;</span>, <span class="string">&#x27;601398&#x27;</span>, <span class="string">&#x27;601939&#x27;</span>, <span class="string">&#x27;601988&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> stock <span class="keyword">in</span> stocks:</span><br><span class="line">    run_backtest(ticker=stock)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="📝-总结与感悟"><a href="#📝-总结与感悟" class="headerlink" title="📝 总结与感悟"></a>📝 总结与感悟</h2><p>通过开发这个策略，我深刻体会到了几个要点：</p>
+<ol>
+<li><strong>简单有效</strong>：复杂的策略不一定比简单的策略好</li>
+<li><strong>风险控制</strong>：止盈止损比盈利预测更重要</li>
+<li><strong>持续学习</strong>：量化交易是一个不断学习和优化的过程</li>
+<li><strong>回测验证</strong>：任何策略都必须经过充分的历史数据验证</li>
+<li><strong>逻辑严谨</strong>：代码中的每个if-else都要仔细考虑优先级</li>
+</ol>
+<h3 id="开发过程中的关键收获"><a href="#开发过程中的关键收获" class="headerlink" title="开发过程中的关键收获"></a>开发过程中的关键收获</h3><ol>
+<li><strong>框架选择很重要</strong>：Backtrader对新手友好，文档完善</li>
+<li><strong>数据源是基础</strong>：AKShare比Yahoo Finance更适合A股数据</li>
+<li><strong>逻辑比算法重要</strong>：正确的事务逻辑比复杂的算法更有价值</li>
+<li><strong>调试很关键</strong>：每个bug都要彻底理解原因</li>
+<li><strong>参数化很必要</strong>：硬编码参数不利于调优</li>
+</ol>
+<h3 id="对量化交易的新认识"><a href="#对量化交易的新认识" class="headerlink" title="对量化交易的新认识"></a>对量化交易的新认识</h3><ul>
+<li><strong>量化不是圣杯</strong>：只是用数据和规则来辅助决策</li>
+<li><strong>回测≠实盘</strong>：历史表现不代表未来</li>
+<li><strong>风险永远第一</strong>：保本比盈利更重要</li>
+<li><strong>持续改进</strong>：市场在变，策略也要随之调整</li>
+</ul>
+<h2 id="🔗-参考资料"><a href="#🔗-参考资料" class="headerlink" title="🔗 参考资料"></a>🔗 参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.backtrader.com/">Backtrader官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://akshare.akfamily.xyz/">AKShare文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/35357276/">Python量化投资从入门到实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zvtvz/zvt">量化交易之路</a></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>免责声明</strong>：本文仅供学习交流使用，不构成投资建议。量化交易存在风险，入市需谨慎。</p>
+</blockquote>
+<h2 id="🎉-后记"><a href="#🎉-后记" class="headerlink" title="🎉 后记"></a>🎉 后记</h2><p>完成第一个量化策略让我受益匪浅。虽然策略可能还不完美，但整个开发过程让我学到了：</p>
+<ol>
+<li><strong>系统化思维</strong>：从数据获取到策略执行的全流程</li>
+<li><strong>风险管理</strong>：多层次的风险控制机制</li>
+<li><strong>工程实践</strong>：代码组织、参数化、调试技巧</li>
+<li><strong>金融理解</strong>：技术分析在实际中的应用</li>
+</ol>
+<p>这只是一个开始，量化交易的道路还很长。但相信有了这个基础，后续的学习会事半功倍。</p>
+<p><strong>如果这篇文章对您有帮助，欢迎点赞收藏！有任何问题欢迎在评论区讨论。</strong></p>
+<hr>
+<p><em>最后更新：2024-11-11</em></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://gggwb.github.io/2025/11/12/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%AF%BE/" title="从零到一：我的第一个量化交易策略开发实战" target="_blank" rel="external">http://gggwb.github.io/2025/11/12/量化交易实战第一课/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/gggwb" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/gggwb" target="_blank"><span class="text-dark">浪浪山小郎君</span><small class="ml-1x">Developer</small></a></h3>
+        <div>Dream big, work hard, stay focused.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2025/10/25/vercel-nodejs-upgrade-solution/" title="解决 Vercel 部署 Node.js 版本过期问题（18.x → 22.x）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gggwb" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
